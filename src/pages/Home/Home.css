@@ -4,7 +4,18 @@
   gap: 1.5rem;
   justify-content: center;
   margin: 0 1rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+.home-emp-buttons button {
+  /* padding: 1rem; */
+  /* font-size: 0.6rem; */
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 

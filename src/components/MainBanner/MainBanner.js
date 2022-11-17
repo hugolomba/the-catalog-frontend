@@ -1,10 +1,16 @@
 import "./MainBanner.css";
+import Card from "@mui/material/Card";
 
 const MainBanner = () => {
   return (
-    <div className="main-banner">
-      <h3>Main Banner</h3>
-    </div>
+    <Card>
+      <div className="main-banner">
+        <h3>
+          Main Banner <br /> Pega as informações de ofertas das emopresas,
+          apenas as ultimas cadastradas
+        </h3>
+      </div>
+    </Card>
   );
 };
 

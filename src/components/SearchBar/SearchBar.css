@@ -1,11 +1,11 @@
 #divBusca {
   display: flex;
   justify-content: space-between;
-  background-color: #e4e4e4;
-  border: solid 2px #919191;
+  /* background-color: #e4e4e4;
+  border: solid 2px #919191; */
   border-radius: 10px;
   width: 90vw;
-  height: 28px;
+  height: 40px;
 }
 
 #txtBusca {
@@ -21,9 +21,9 @@
 #btnBusca {
   border: none;
   float: left;
-  height: 28px;
+  height: 40px;
   border-radius: 0 7px 7px 0;
   width: 70px;
   font-weight: bold;
-  background: #b6b6b6;
+  /* background: #b6b6b6; */
 }
