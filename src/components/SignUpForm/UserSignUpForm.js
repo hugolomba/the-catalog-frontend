@@ -166,10 +166,10 @@ export default function SignUp() {
                 <TextField
                   //   required
                   fullWidth
-                  name="profile-image"
+                  name="profileImg"
                   label="Foto de Perfil"
                   type="file"
-                  id="profile-image"
+                  id="profileImg"
                   autoComplete="new-profile-image"
                   value={profileImg}
                   onChange={(e) => setProfileImg(e.target.value)}
