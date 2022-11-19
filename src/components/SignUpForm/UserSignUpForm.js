@@ -13,7 +13,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import signupLogo from "../../img/icons/signup.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import UserAuthApi from "../../api/user.auth.api";
@@ -48,9 +48,12 @@ export default function SignUp() {
   const [profileImg, setProfileImg] = useState("");
   const [password, setPassword] = useState("");
   //   const [confirmPassword, setConfirmPassword] = useState(null);
-  const handleSubmit = (e) => {
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    UserAuthApi.signup({
+    await UserAuthApi.signup({
       name,
       username,
       email,
@@ -60,6 +63,7 @@ export default function SignUp() {
       profileImg,
       password,
     });
+    navigate("/");
   };
 
   return (
@@ -171,8 +175,7 @@ export default function SignUp() {
                   type="file"
                   id="profileImg"
                   autoComplete="new-profile-image"
-                  value={profileImg}
-                  onChange={(e) => setProfileImg(e.target.value)}
+                  onChange={(e) => setProfileImg(e.target.files[0])}
                 />
               </Grid>
               <Grid item xs={12}>

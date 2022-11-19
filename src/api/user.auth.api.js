@@ -25,22 +25,22 @@ class authApi {
     password,
     favorites,
   }) => {
+    const dados = new FormData();
+    dados.append("name", name);
+    dados.append("username", username);
+    dados.append("email", email);
+    dados.append("phone", phone);
+    dados.append("addresses", addresses);
+    dados.append("birthDate", birthDate);
+    dados.append("profileImg", profileImg);
+    dados.append("password", password);
+    dados.append("favorites", favorites);
     try {
       //   const hasEmptyFields = isEmpty(username, password);
       //   if (hasEmptyFields) {
       //     throw new Error('Campos obrigatórios.')
       //   }
-      await this.api.post("/user/auth/cadastro", {
-        name,
-        username,
-        email,
-        phone,
-        addresses,
-        birthDate,
-        profileImg,
-        password,
-        favorites,
-      });
+      await this.api.post("/user/auth/cadastro", dados);
     } catch (error) {
       handleResponseError(error);
     }
@@ -75,12 +75,12 @@ class authApi {
     try {
       // faz a requisição no backend colocando o token na autorização dos headers.
       // esperamos a resposta ser as informações de dentro do token.
-      const { data } = this.api.get("/user/auth/verify", {
+      const { data } = await this.api.get("/user/auth/verify", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      return data;
+      return data.authenticatedUser;
     } catch (error) {
       handleResponseError(error);
     }

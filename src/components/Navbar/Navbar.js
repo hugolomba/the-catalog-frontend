@@ -13,7 +13,15 @@ import Menu from "../Menu/Menu";
 
 import Avatar from "@mui/material/Avatar";
 
+// context login
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+
 const Navbar = () => {
+  // Subscribe to the AuthContext to gain access to
+  // the values from AuthContext.Provider `value` prop
+  const { isLoggedIn, user } = useContext(AuthContext); // <== ADD
+
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <nav>
@@ -28,7 +36,20 @@ const Navbar = () => {
       </Link>
       <div className="avatar">
         {/* <FaUserCircle /> */}
-        <Avatar alt="Remy Sharp" src={profile} sx={{ width: 45, height: 45 }} />
+        {isLoggedIn ? (
+          <Avatar
+            alt=""
+            src={user.profileImg}
+            sx={{ width: 45, height: 45 }}
+            onClick={() => setMenuIsOpen(true)}
+          />
+        ) : (
+          <Avatar
+            alt=""
+            sx={{ width: 45, height: 45 }}
+            onClick={() => setMenuIsOpen(true)}
+          />
+        )}
       </div>
     </nav>
   );

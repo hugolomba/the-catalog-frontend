@@ -1,4 +1,4 @@
-import * as React from "react";
+// import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,12 +13,16 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import authApi from "../../api/user.auth.api";
 
 import signinLogo from "../../img/icons/signin.png";
+import { NextPlan } from "@mui/icons-material";
+
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 function Copyright(props) {
   return (
@@ -42,13 +46,21 @@ export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const { isLoading, authenticateUser } = useContext(AuthContext);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    authApi.login({
-      username,
-      password,
-    });
-    authApi.verify();
+    try {
+      await authApi.login({
+        username,
+        password,
+      });
+      authenticateUser();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -103,6 +115,7 @@ export default function SignIn() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            disabled={isLoading}
           >
             Login de Usuário
           </Button>

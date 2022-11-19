@@ -25,10 +25,14 @@ const AuthProviderWrapper = ({ children }) => {
         // a verificação que fizemos no backend nos devolve
         // um objeto com o payload que existia dentro do token
         setUser(response);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
       }
     } catch (error) {
       // caso o token seja invalido ou acontecer qualquer erro na verificação
       // removemos o token e guardamos a informação que não existe usuário logado
+      console.log("erro context: ", error);
       removeToken();
       setIsLoggedIn(false);
       setUser(null);
