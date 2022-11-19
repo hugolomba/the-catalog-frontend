@@ -208,8 +208,7 @@ export default function SignUp() {
                   type="file"
                   id="profile-image"
                   autoComplete="new-profile-image"
-                  value={profileImg}
-                  onChange={(e) => setProfileImg(e.target.value)}
+                  onChange={(e) => setProfileImg(e.target.files[0])}
                 />
               </Grid>
               <Grid item xs={12}>

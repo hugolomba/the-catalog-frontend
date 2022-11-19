@@ -15,12 +15,15 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import authApi from "../../api/company.auth.api";
 
 import signinLogo from "../../img/icons/signin.png";
+
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 function Copyright(props) {
   return (
@@ -44,13 +47,21 @@ export default function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const { isLoading, authenticateCompany } = useContext(AuthContext);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    authApi.login({
-      username,
-      password,
-    });
-    authApi.verify();
+    try {
+      await authApi.login({
+        username,
+        password,
+      });
+      authenticateCompany();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -105,6 +116,7 @@ export default function SignIn() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            // disabled={isLoading}
           >
             Login de Empresa
           </Button>
