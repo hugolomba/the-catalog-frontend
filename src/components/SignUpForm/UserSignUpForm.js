@@ -56,23 +56,28 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    console.log("🚀 before", isLoading);
 
-    await UserAuthApi.signup({
-      name,
-      username,
-      email,
-      phone,
-      addresses,
-      birthDate,
-      profileImg,
-      password,
-    });
-    // console.log("Usuário criado: ", response);
-    // navigate("/");
-    setIsLoading(false);
-    console.log("🚀 after", isLoading);
+    console.log("🚀 before", isLoading);
+    try {
+      setIsLoading(true);
+      await UserAuthApi.signup({
+        name,
+        username,
+        email,
+        phone,
+        addresses,
+        birthDate,
+        profileImg,
+        password,
+      });
+      // console.log("Usuário criado: ", response);
+      setIsLoading(false);
+      navigate("/user/signin");
+
+      console.log("🚀 after", isLoading);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

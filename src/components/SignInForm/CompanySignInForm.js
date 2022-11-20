@@ -63,6 +63,7 @@ export default function SignIn() {
       navigate("/");
       setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };

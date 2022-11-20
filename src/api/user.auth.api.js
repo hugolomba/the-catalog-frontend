@@ -43,7 +43,7 @@ class authApi {
       //     throw new Error('Campos obrigatórios.')
       //   }
       await this.api.post("/user/auth/cadastro", dados);
-      console.log("Usuário Cadastrada");
+      console.log("Usuário Cadastrado");
     } catch (error) {
       handleResponseError(error);
     }

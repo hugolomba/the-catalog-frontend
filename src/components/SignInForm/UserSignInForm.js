@@ -24,8 +24,6 @@ import { NextPlan } from "@mui/icons-material";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
-import Loading from "../Loading";
-
 function Copyright(props) {
   return (
     <Typography
@@ -51,6 +49,8 @@ export default function SignIn() {
   const navigate = useNavigate();
   const { setIsLoading, isLoading, authenticateUser } = useContext(AuthContext);
 
+  console.log("isloading in sigIn: ", isLoading);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -63,6 +63,8 @@ export default function SignIn() {
       navigate("/");
       setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
+
       console.log(error);
     }
   };
