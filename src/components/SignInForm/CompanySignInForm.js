@@ -48,10 +48,12 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const { isLoading, authenticateCompany } = useContext(AuthContext);
+  const { setIsLoading, isLoading, authenticateCompany } =
+    useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     try {
       await authApi.login({
         username,
@@ -59,6 +61,7 @@ export default function SignIn() {
       });
       authenticateCompany();
       navigate("/");
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -116,7 +119,7 @@ export default function SignIn() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
-            // disabled={isLoading}
+            disabled={isLoading}
           >
             Login de Empresa
           </Button>

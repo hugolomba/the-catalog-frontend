@@ -10,8 +10,8 @@ const AuthProviderWrapper = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState();
 
-  console.log("isLopggedIn: ", isLoggedIn);
-  console.log("user: ", user);
+  // console.log("isLopggedIn: ", isLoggedIn);
+  // console.log("user: ", user);
 
   // função que chama a verificação para saber se o token ainda é válido
   const authenticateUser = async () => {
@@ -93,6 +93,7 @@ const AuthProviderWrapper = ({ children }) => {
         authenticateUser,
         authenticateCompany,
         logOutUser,
+        setIsLoading,
       }}
     >
       {children}

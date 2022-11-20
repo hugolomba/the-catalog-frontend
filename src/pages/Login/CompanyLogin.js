@@ -1,11 +1,17 @@
 import "./CompanyLogin.css";
 
 import CompanySignInForm from "../../components/SignInForm/CompanySignInForm";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+
+import Loading from "../../components/Loading";
 
 const Login = () => {
+  const { isLoading } = useContext(AuthContext);
+
   return (
-    <div>
-      <CompanySignInForm />
+    <div className={isLoading ? "signin-form-container-loading" : ""}>
+      {isLoading ? <Loading /> : <CompanySignInForm />}
     </div>
   );
 };

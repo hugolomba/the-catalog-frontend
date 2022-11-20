@@ -17,6 +17,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import UserAuthApi from "../../api/user.auth.api";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 function Copyright(props) {
   return (
@@ -48,11 +50,15 @@ export default function SignUp() {
   const [profileImg, setProfileImg] = useState("");
   const [password, setPassword] = useState("");
   //   const [confirmPassword, setConfirmPassword] = useState(null);
+  const { setIsLoading, isLoading } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    console.log("🚀 before", isLoading);
+
     await UserAuthApi.signup({
       name,
       username,
@@ -64,7 +70,9 @@ export default function SignUp() {
       password,
     });
     // console.log("Usuário criado: ", response);
-    navigate("/");
+    // navigate("/");
+    setIsLoading(false);
+    console.log("🚀 after", isLoading);
   };
 
   return (
@@ -206,6 +214,7 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disable={isLoading.toString()}
             >
               Cadastrar Usuário
             </Button>

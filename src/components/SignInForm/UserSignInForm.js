@@ -24,6 +24,8 @@ import { NextPlan } from "@mui/icons-material";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
+import Loading from "../Loading";
+
 function Copyright(props) {
   return (
     <Typography
@@ -47,10 +49,11 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const { isLoading, authenticateUser } = useContext(AuthContext);
+  const { setIsLoading, isLoading, authenticateUser } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     try {
       await authApi.login({
         username,
@@ -58,6 +61,7 @@ export default function SignIn() {
       });
       authenticateUser();
       navigate("/");
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -80,6 +84,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Login de Usuário
         </Typography>
+
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"

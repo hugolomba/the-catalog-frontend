@@ -10,7 +10,7 @@ class authApi {
     this.api = axios.create({
       baseURL:
         process.env.REACT_APP_API_URL_USER ||
-        "https://final-project.cyclic.app/",
+        "https://final-project-backend-production.up.railway.app/",
     });
   }
 
