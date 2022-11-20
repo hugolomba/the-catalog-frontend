@@ -63,6 +63,7 @@ export default function SignUp() {
       profileImg,
       password,
     });
+    // console.log("Usuário criado: ", response);
     navigate("/");
   };
 

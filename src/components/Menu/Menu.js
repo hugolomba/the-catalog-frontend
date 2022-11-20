@@ -72,15 +72,19 @@ const Menu = ({ setMenuIsOpen }) => {
 
         <div className="button-company">
           <Link to="/company/signin">
-            <Button
-              variant="outlined"
-              onClick={() => {
-                logOutUser();
-                setMenuIsOpen(false);
-              }}
-            >
-              Cadastro/Login de empresa
-            </Button>
+            {isLoggedIn ? (
+              ""
+            ) : (
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  logOutUser();
+                  setMenuIsOpen(false);
+                }}
+              >
+                Cadastro/Login de empresa
+              </Button>
+            )}
           </Link>
         </div>
       </div>
