@@ -8,7 +8,7 @@ const AuthContext = createContext();
 const AuthProviderWrapper = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({ type: "0" });
 
   // console.log("isLopggedIn: ", isLoggedIn);
   // console.log("user: ", user);

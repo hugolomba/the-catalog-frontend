@@ -5,47 +5,27 @@ import MainCard from "../../components/MainCard/MainCard";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
 import UserHome from "./UserHome";
 import CompanyHome from "./CompanyHome";
+import CompanyProfilePage from "../CompanyPages/CompanyProfilePage/CompanyProfilePage";
 
 const MainHome = () => {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
+  // const [typeOfUser, setTypeOfUser] = useState("user");
+  // console.log("user in home: ", user);
 
-  return (
-    //   <div className="home-container">
-    //     {/* <div className="home-emp-buttons">
-    //       <Link to="/company/signin">
-    //         <Button variant="outlined">Cadastro/Login de empresa</Button>
-    //       </Link>
-    //       <Link to="/user/signin">
-    //         <Button variant="outlined">Cadastro/Login de usuário</Button>
-    //       </Link>
-    //       <Button variant="outlined">Login de empresa</Button>
-    //     </div> */}
+  let typeOfUser = "user";
 
-    //     <SearchBar />
-    //     <MainBanner />
+  if (user && user.type === "company") typeOfUser = "company";
+  // console.log(
+  //   "🚀 ~ file: MainHome.js ~ line 20 ~ MainHome ~ typeOfUser",
+  //   typeOfUser
+  // );
 
-    //     <div className="services-container">
-    //       <h3>Categorias de serviços</h3>
-    //       <div className="cards">
-    //         <MainCard type={"Food"} />
-    //         <MainCard type={"Pharmacy"} />
-    //         <MainCard type={"Market"} />
-    //         <MainCard type={"Events"} />
-    //         <MainCard type={"Drinks"} />
-    //         <MainCard type={"Service"} />
-    //         <MainCard type={"Doméstico"} />
-    //         <MainCard type={"Tecnologia"} />
-    //       </div>
-    //     </div>
-    //   </div>
-    // );
-    // <>{user.type === "company" ? <CompanyHome /> : <UserHome />}</>
-    <UserHome />
-  );
+  // return <CompanyProfilePage user={user} />;
+  return <>{typeOfUser === "company" ? <CompanyHome /> : <UserHome />}</>;
 };
 
 export default MainHome;

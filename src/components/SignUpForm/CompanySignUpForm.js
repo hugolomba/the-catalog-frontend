@@ -16,10 +16,12 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import signupLogo from "../../img/icons/signup.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import CompanyAuthApi from "../../api/company.auth.api";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 function Copyright(props) {
   return (
@@ -55,25 +57,39 @@ export default function SignUp() {
   const [services, setServices] = useState([]);
   const [description, setDescription] = useState("");
   const [offers, setOffers] = useState([]);
-
   //   const [confirmPassword, setConfirmPassword] = useState(null);
-  const handleSubmit = (e) => {
+
+  const { setIsLoading, isLoading } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    CompanyAuthApi.signup({
-      name,
-      username,
-      email,
-      phone,
-      addresses,
-      category,
-      subcategory,
-      profileImg,
-      coverImg,
-      password,
-      services,
-      description,
-      offers,
-    });
+    setIsLoading(true);
+    console.log("🚀 before ~ isLoading", isLoading);
+    try {
+      await CompanyAuthApi.signup({
+        name,
+        username,
+        email,
+        phone,
+        addresses,
+        category,
+        subcategory,
+        profileImg,
+        coverImg,
+        password,
+        services,
+        description,
+        offers,
+      });
+      setIsLoading(false);
+      console.log("🚀 after ~ isLoading", isLoading);
+
+      navigate("/company/signin");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -264,6 +280,7 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disable={isLoading}
             >
               Cadastrar Empresa
             </Button>

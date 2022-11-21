@@ -14,26 +14,26 @@ const MainCard = ({ type }) => {
   let img;
 
   switch (type) {
-    case "Food":
+    case "Restaurante":
       img = food;
       break;
-    case "Pharmacy":
+    case "Farmácia":
       img = pharmacy;
       break;
-    case "Service":
+    case "Serviços":
       img = services;
       break;
-    case "Market":
+    case "Mercado":
       img = superMarket;
       break;
 
-    case "Events":
+    case "Eventos":
       img = events;
       break;
-    case "Drinks":
+    case "Bebidas":
       img = drinks;
       break;
-    case "Doméstico":
+    case "Serv. Domésticos":
       img = domestico;
       break;
     case "Tecnologia":

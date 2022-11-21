@@ -8,9 +8,7 @@ class authApi {
     // configuração do axios para usar sempre como base ou o q está no arquivo `.env`
     // ou, caso não exista, o localhost:5000.
     this.api = axios.create({
-      baseURL:
-        process.env.REACT_APP_API_URL_USER ||
-        "https://final-project-backend-production.up.railway.app/",
+      baseURL: "https://final-project-backend-production.up.railway.app/",
     });
   }
 

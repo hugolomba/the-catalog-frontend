@@ -25,13 +25,15 @@ const UserHome = () => {
       <div className="services-container">
         <h3>Categorias de serviços</h3>
         <div className="cards">
-          <MainCard type={"Food"} />
-          <MainCard type={"Pharmacy"} />
-          <MainCard type={"Market"} />
-          <MainCard type={"Events"} />
-          <MainCard type={"Drinks"} />
-          <MainCard type={"Service"} />
-          <MainCard type={"Doméstico"} />
+          <Link to="/companies/category/Test1">
+            <MainCard type={"Restaurante"} />
+          </Link>
+          <MainCard type={"Farmácia"} />
+          <MainCard type={"Mercado"} />
+          <MainCard type={"Eventos"} />
+          <MainCard type={"Bebidas"} />
+          <MainCard type={"Serviços"} />
+          <MainCard type={"Serv. Domésticos"} />
           <MainCard type={"Tecnologia"} />
         </div>
       </div>

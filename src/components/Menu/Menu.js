@@ -2,7 +2,7 @@ import "./Menu.css";
 import closeIcon from "../../img/icons/close.png";
 import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
+import { Button, Stack } from "@mui/material/";
 import profile from "../../img/profile.png";
 
 import { useContext } from "react";
@@ -39,17 +39,29 @@ const Menu = ({ setMenuIsOpen }) => {
           </div>
           {isLoggedIn ? (
             <div className="login-buttons-container">
-              <Link to="/user/signin">
-                <Button
-                  variant="contained"
-                  onClick={() => {
-                    logOutUser();
-                    setMenuIsOpen(false);
-                  }}
-                >
-                  sair
-                </Button>
-              </Link>
+              <Stack direction="row" spacing={2}>
+                <Link to={`/user/${user && user.username}`}>
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      setMenuIsOpen(false);
+                    }}
+                  >
+                    Ver Perfil
+                  </Button>
+                </Link>
+                <Link to="/user/signin">
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      logOutUser();
+                      setMenuIsOpen(false);
+                    }}
+                  >
+                    sair
+                  </Button>
+                </Link>
+              </Stack>
             </div>
           ) : (
             <div className="login-buttons-container">
