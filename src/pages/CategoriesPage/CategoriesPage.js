@@ -82,14 +82,17 @@ const CategoriesPage = () => {
                 //   <h2>{company.name}</h2>
                 //   <h4>{company.category[0]}</h4>
                 // </Item>
-                <Link to={`/profile/${company.username}`}>
+                <Link
+                  key={company.username}
+                  to={`/profile/${company.username}`}
+                >
                   <Card sx={{ maxWidth: 345 }}>
                     <CardActionArea>
                       <CardMedia
                         component="img"
                         height="140"
                         image={company.profileImg}
-                        alt="green iguana"
+                        alt="compnay-card"
                       />
 
                       <CardContent>

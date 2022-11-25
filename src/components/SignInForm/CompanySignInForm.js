@@ -124,16 +124,21 @@ export default function SignIn() {
           >
             Login de Empresa
           </Button>
+          <Link to="/company/signup">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={isLoading}
+            >
+              Ainda não tem cadastro? Cadastre-se!
+            </Button>
+          </Link>
+
           <Grid container>
             <Grid item xs>
-              <Link to="#">Forgot password?</Link>
-            </Grid>
-            <Grid item>
-              {/* <LinkMUI variant="body2"> */}
-              <Link to="/company/signup">
-                {"Don't have an account? Sign Up"}
-              </Link>
-              {/* </LinkMUI> */}
+              <Link to="#">Esqueceu a senha?</Link>
             </Grid>
           </Grid>
         </Box>

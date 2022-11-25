@@ -7,11 +7,34 @@ import { Button, Stack } from "@mui/material/";
 import { Add, Edit } from "@mui/icons-material/";
 import { Link } from "react-router-dom";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
+
+import AddOfferDialog from "../../components/AddOfferDialog/AddOfferDialog";
+import AddServiceDialog from "../../components/AddServiceDialog/AddServiceDialog";
 
 const CompanyHome = () => {
   const { categories, user } = useContext(AuthContext);
+
+  const [openOffer, setOpenOffer] = useState(false);
+
+  const handleClickOpenOffer = () => {
+    setOpenOffer(true);
+  };
+
+  const handleCloseOffer = () => {
+    setOpenOffer(false);
+  };
+
+  const [openService, setOpenService] = useState(false);
+
+  const handleClickOpenService = () => {
+    setOpenService(true);
+  };
+
+  const handleCloseService = () => {
+    setOpenService(false);
+  };
 
   return (
     <div className="home-container">
@@ -25,7 +48,12 @@ const CompanyHome = () => {
         <div className="add-service-container">
           <h2>Adicionar Serviço</h2>
           <Stack direction="row" spacing={2}>
-            <Button size="small" variant="contained" startIcon={<Add />}>
+            <Button
+              size="small"
+              variant="contained"
+              startIcon={<Add />}
+              onClick={handleClickOpenService}
+            >
               Adicionar Novo
             </Button>
             <Button size="small" variant="contained" startIcon={<Edit />}>
@@ -36,7 +64,12 @@ const CompanyHome = () => {
         <div className="add-offers-container">
           <h2>Adicionar Ofertas</h2>
           <Stack direction="row" spacing={2}>
-            <Button size="small" variant="contained" startIcon={<Add />}>
+            <Button
+              size="small"
+              variant="contained"
+              startIcon={<Add />}
+              onClick={handleClickOpenOffer}
+            >
               Adicionar Novo
             </Button>
             <Button size="small" variant="contained" startIcon={<Edit />}>
@@ -53,6 +86,16 @@ const CompanyHome = () => {
           </Stack>
         </div>
       </div>
+      <AddOfferDialog
+        open={openOffer}
+        handleClickOpen={handleClickOpenOffer}
+        handleClose={handleCloseOffer}
+      />
+      <AddServiceDialog
+        openService={openService}
+        handleClickOpenService={handleClickOpenService}
+        handleCloseService={handleCloseService}
+      />
     </div>
   );
 };

@@ -12,9 +12,9 @@ import SpeedDial from "../../../components/SpeedDial";
 const ProfilePage = () => {
   const { company } = useParams();
   const { companies } = useContext(AuthContext);
-  console.log("companie Param: ", company);
 
   const foundCompanie = companies.find((c) => c.username === company);
+  console.log("found company: ", foundCompanie);
 
   return (
     <div className="profile-container">
@@ -36,7 +36,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <ProfileTabs user={foundCompanie} />
+      <ProfileTabs company={foundCompanie} />
       <SpeedDial sx={{ position: "absolute" }} />
     </div>
   );

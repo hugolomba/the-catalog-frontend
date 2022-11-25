@@ -126,11 +126,13 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link to="#">Forgot password?</Link>
+              <Link to="#">Esqueceu a senha?</Link>
             </Grid>
             <Grid item>
               {/* <LinkMUI variant="body2"> */}
-              <Link to="/user/signup">{"Don't have an account? Sign Up"}</Link>
+              <Link to="/user/signup">
+                Ainda não tem cadastro? Cadastre-se!
+              </Link>
               {/* </LinkMUI> */}
             </Grid>
           </Grid>

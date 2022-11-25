@@ -8,7 +8,7 @@ import LinkMUI from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
+import { AlertTitle, Alert, Typography } from "@mui/material/";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import signupLogo from "../../img/icons/signup.png";
@@ -19,24 +19,6 @@ import { useState } from "react";
 import userApi from "../../api/user.api";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
-
-// function Copyright(props) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {"Copyright © "}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{" "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
 
 const theme = createTheme();
 
@@ -51,6 +33,8 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   //   const [confirmPassword, setConfirmPassword] = useState(null);
   const { setIsLoading, isLoading } = useContext(AuthContext);
+
+  const [alertIsOpen, setAlertIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -71,166 +55,180 @@ export default function SignUp() {
       });
       // console.log("Usuário criado: ", response);
       setIsLoading(false);
-      navigate("/user/signin");
     } catch (error) {
       console.log(error);
+    } finally {
+      setAlertIsOpen(true);
+      setIsLoading(false);
+
+      const redirect = setTimeout(() => navigate("/user/signin"), 5000);
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, width: 50, height: 50 }} src={signupLogo}>
-            {/* <LockOutlinedIcon /> */}
-            {/* <img src={signupLogo} />  */}
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Cadastro de Usuário
-          </Typography>
+      {alertIsOpen ? (
+        <Alert severity="success">
+          <AlertTitle>Cadastro Realizado!</AlertTitle>
+          {`O cadastro de ${name} foi cadastrado!`}
+          <p>Redirecionando para a página de login ...</p>
+        </Alert>
+      ) : (
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
           <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="name"
-                  required
-                  fullWidth
-                  id="name"
-                  label="Nome Completo"
-                  autoFocus
-                  //   error
-                  //   helperText="Incorrect entry."
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="username"
-                  label="Nome de Usuário"
-                  name="username"
-                  autoComplete="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email"
-                  name="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  id="phone"
-                  label="Telefone"
-                  name="phone"
-                  autoComplete="phone"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  id="addresses"
-                  label="Endereço"
-                  name="addresses"
-                  autoComplete="addresses"
-                  value={addresses}
-                  onChange={(e) => setAddresses(e.target.value)}
-                />
-              </Grid>
-              {/* <Grid item xs={12}>
-                <TextField
-                  //   required
-                  fullWidth
-                  type="date"
-                  id="birthDate"
-                  label="Data de Nascimento"
-                  name="birthDate"
-                  autoComplete="birthDate"
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                />
-              </Grid> */}
-              <Grid item xs={12}>
-                <TextField
-                  //   required
-                  fullWidth
-                  name="profileImg"
-                  label="Foto de Perfil"
-                  type="file"
-                  id="profileImg"
-                  autoComplete="new-profile-image"
-                  onChange={(e) => setProfileImg(e.target.files[0])}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Grid>
-              {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid> */}
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              disable={isLoading.toString()}
+            <Avatar sx={{ m: 1, width: 50, height: 50 }} src={signupLogo}>
+              {/* <LockOutlinedIcon /> */}
+              {/* <img src={signupLogo} />  */}
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Cadastro de Usuário
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 3 }}
             >
-              Cadastrar Usuário
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                {/* <LinkMUI href="/user/signin" variant="body2"> */}
-                <Link to="/user/signin">Already have an account? Sign in</Link>
-                {/* </LinkMUI> */}
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="name"
+                    required
+                    fullWidth
+                    id="name"
+                    label="Nome Completo"
+                    autoFocus
+                    //   error
+                    //   helperText="Incorrect entry."
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="username"
+                    label="Nome de Usuário"
+                    name="username"
+                    autoComplete="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email"
+                    name="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    id="phone"
+                    label="Telefone"
+                    name="phone"
+                    autoComplete="phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    id="addresses"
+                    label="Endereço"
+                    name="addresses"
+                    autoComplete="addresses"
+                    value={addresses}
+                    onChange={(e) => setAddresses(e.target.value)}
+                  />
+                </Grid>
+                {/* <Grid item xs={12}>
+              <TextField
+                //   required
+                fullWidth
+                type="date"
+                id="birthDate"
+                label="Data de Nascimento"
+                name="birthDate"
+                autoComplete="birthDate"
+                value={birthDate}
+                onChange={(e) => setBirthDate(e.target.value)}
+              />
+            </Grid> */}
+                <Grid item xs={12}>
+                  <TextField
+                    //   required
+                    fullWidth
+                    name="profileImg"
+                    label="Foto de Perfil"
+                    type="file"
+                    id="profileImg"
+                    autoComplete="new-profile-image"
+                    onChange={(e) => setProfileImg(e.target.files[0])}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </Grid>
+                {/* <Grid item xs={12}>
+              <FormControlLabel
+                control={
+                  <Checkbox value="allowExtraEmails" color="primary" />
+                }
+                label="I want to receive inspiration, marketing promotions and updates via email."
+              />
+            </Grid> */}
               </Grid>
-            </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                disable={isLoading.toString()}
+              >
+                Cadastrar Usuário
+              </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  {/* <LinkMUI href="/user/signin" variant="body2"> */}
+                  <Link to="/user/signin">
+                    Already have an account? Sign in
+                  </Link>
+                  {/* </LinkMUI> */}
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
-        </Box>
-        {/* <Copyright sx={{ mt: 5 }} /> */}
-      </Container>
+          {/* <Copyright sx={{ mt: 5 }} /> */}
+        </Container>
+      )}
     </ThemeProvider>
   );
 }

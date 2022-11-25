@@ -8,7 +8,10 @@ class CompanyApi {
     // configuração do axios para usar sempre como base ou o q está no arquivo `.env`
     // ou, caso não exista, o localhost:5000.
     this.api = axios.create({
-      baseURL: "http://localhost:5050/",
+      baseURL:
+        process.env.REACT_APP_API_URL_USER ||
+        // "https://final-project-backend-production.up.railway.app/",
+        "http://localhost:5050/",
     });
 
     this.api.interceptors.request.use((req) => {
@@ -48,9 +51,9 @@ class CompanyApi {
     dados.append("profileImg", profileImg);
     dados.append("coverImg", coverImg);
     dados.append("password", password);
-    dados.append("services", services);
+    // dados.append("services", services);
     dados.append("description", description);
-    dados.append("offers", offers);
+    // dados.append("offers", offers);
     try {
       //   const hasEmptyFields = isEmpty(username, password);
       //   if (hasEmptyFields) {
@@ -147,6 +150,38 @@ class CompanyApi {
   delete = async () => {
     try {
       await this.api.delete("/companies");
+    } catch (error) {
+      handleResponseError(error);
+    }
+  };
+
+  // métdodo para adicionar oferta
+
+  addOffer = async ({ offerName, offerPrice, expiration, offerImg }) => {
+    const dados = new FormData();
+    dados.append("offerName", offerName);
+    dados.append("offerPrice", offerPrice);
+    dados.append("expiration", expiration);
+    dados.append("offerImg", offerImg);
+
+    try {
+      await this.api.post("/companies/offer", dados);
+    } catch (error) {
+      handleResponseError(error);
+    }
+  };
+
+  // métdodo para adicionar serviço (fazer)
+
+  addService = async ({ serviceName, servicePrice, serviceImg }) => {
+    const dados = new FormData();
+    dados.append("serviceName", serviceName);
+    dados.append("servicePrice", servicePrice);
+
+    dados.append("serviceImg", serviceImg);
+
+    try {
+      await this.api.post("/companies/service", dados);
     } catch (error) {
       handleResponseError(error);
     }

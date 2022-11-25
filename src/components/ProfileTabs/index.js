@@ -52,13 +52,13 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs({ user }) {
+export default function BasicTabs({ company }) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  console.log(">>>> company", company);
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -78,16 +78,16 @@ export default function BasicTabs({ user }) {
         <Stack value={value} index={0} direction="column" spacing={2}>
           {/* <Item>
             <h3>Categoria:</h3>
-            {user && user.category[0]}
+            {company && company.category[0]}
           </Item> */}
-          <Item>{user && user.description}</Item>
+          <Item>{company && company.description}</Item>
           <Item>
             <h3>Telefone:</h3>
-            {user && user.phone}
+            {company && company.phone}
           </Item>
           <Item>
             <h3>Endereço:</h3>
-            {user && user.addresses}
+            {company && company.addresses}
           </Item>
           <Item>
             <h3>Rede Social e Site:</h3>
@@ -100,9 +100,9 @@ export default function BasicTabs({ user }) {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Stack value={value} index={0} direction="column" spacing={2}>
-          {/* <Item>{user && user.description}</Item> */}
-          {user &&
-            user.offers.map((offer) => {
+          {/* <Item>{company && company.description}</Item> */}
+          {company &&
+            company.offers.map((offer) => {
               return <OfferCard key={offer.name} offer={offer} />;
             })}
         </Stack>
