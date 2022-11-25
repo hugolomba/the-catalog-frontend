@@ -13,8 +13,19 @@ import { AuthContext } from "../../context/auth.context";
 import AddOfferDialog from "../../components/AddOfferDialog/AddOfferDialog";
 import AddServiceDialog from "../../components/AddServiceDialog/AddServiceDialog";
 
+import EditServiceDialog from "../../components/EditServiceDialog/EditServiceDialog";
+import EditOfferDialog from "../../components/EditOfferDialog/EditOfferDialog";
+
 const CompanyHome = () => {
-  const { categories, user } = useContext(AuthContext);
+  const { categories, user, companies } = useContext(AuthContext);
+
+  console.log("user from context in company home: ", user);
+
+  const filteredArr = companies.filter((company) => company._id === user._id);
+
+  console.log("companies from context: ", companies);
+
+  console.log("filtered: ", filteredArr);
 
   const [openOffer, setOpenOffer] = useState(false);
 
@@ -34,6 +45,28 @@ const CompanyHome = () => {
 
   const handleCloseService = () => {
     setOpenService(false);
+  };
+
+  //edit
+
+  const [openEditService, setOpenEditService] = useState(false);
+
+  const handleClickOpenEditService = () => {
+    setOpenEditService(true);
+  };
+
+  const handleCloseEditService = () => {
+    setOpenEditService(false);
+  };
+
+  const [openEditOffer, setOpenEditOffer] = useState(false);
+
+  const handleClickOpenEditOffer = () => {
+    setOpenEditOffer(true);
+  };
+
+  const handleCloseEditOffer = () => {
+    setOpenEditOffer(false);
   };
 
   return (
@@ -56,7 +89,12 @@ const CompanyHome = () => {
             >
               Adicionar Novo
             </Button>
-            <Button size="small" variant="contained" startIcon={<Edit />}>
+            <Button
+              size="small"
+              variant="contained"
+              startIcon={<Edit />}
+              onClick={handleClickOpenEditService}
+            >
               Editar/Remover
             </Button>
           </Stack>
@@ -72,7 +110,12 @@ const CompanyHome = () => {
             >
               Adicionar Novo
             </Button>
-            <Button size="small" variant="contained" startIcon={<Edit />}>
+            <Button
+              size="small"
+              variant="contained"
+              startIcon={<Edit />}
+              onClick={handleClickOpenEditOffer}
+            >
               Editar/Remover
             </Button>
           </Stack>
@@ -95,6 +138,20 @@ const CompanyHome = () => {
         openService={openService}
         handleClickOpenService={handleClickOpenService}
         handleCloseService={handleCloseService}
+      />
+
+      <EditServiceDialog
+        openEditService={openEditService}
+        handleClickOpenEditService={handleClickOpenEditService}
+        handleCloseEditService={handleCloseEditService}
+        user={filteredArr}
+      />
+
+      <EditOfferDialog
+        openEditOffer={openEditOffer}
+        handleClickOpenEditOffer={handleClickOpenEditOffer}
+        handleCloseEditOffer={handleCloseEditOffer}
+        user={filteredArr}
       />
     </div>
   );
