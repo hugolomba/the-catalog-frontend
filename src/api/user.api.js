@@ -2,15 +2,25 @@ import axios from "axios";
 import { isEmpty } from "../utils/validation.utils";
 import { handleResponseError } from "../utils/errors.utils";
 import { getToken, storeToken } from "../utils/token.utils";
+import { NextPlan } from "@mui/icons-material";
 
-class authApi {
+class UserApi {
   constructor() {
     // configuração do axios para usar sempre como base ou o q está no arquivo `.env`
     // ou, caso não exista, o localhost:5000.
     this.api = axios.create({
       baseURL:
         process.env.REACT_APP_API_URL_USER ||
-        "https://final-project-backend-production.up.railway.app/",
+        // "https://final-project-backend-production.up.railway.app/",
+        "http://localhost:5050/",
+    });
+
+    this.api.interceptors.request.use((req) => {
+      const token = getToken();
+      if (token) {
+        req.headers = { Authorization: `Bearer ${token}` };
+      }
+      return req;
     });
   }
 
@@ -22,7 +32,7 @@ class authApi {
     email,
     phone,
     addresses,
-    birthDate,
+    // birthDate,
     profileImg,
     password,
     favorites,
@@ -33,10 +43,12 @@ class authApi {
     dados.append("email", email);
     dados.append("phone", phone);
     dados.append("addresses", addresses);
-    dados.append("birthDate", birthDate);
+    // dados.append("birthDate", birthDate);
     dados.append("profileImg", profileImg);
     dados.append("password", password);
     dados.append("favorites", favorites);
+
+    console.log("dados FormData(signup): ", dados);
     try {
       //   const hasEmptyFields = isEmpty(username, password);
       //   if (hasEmptyFields) {
@@ -44,6 +56,46 @@ class authApi {
       //   }
       await this.api.post("/user/auth/cadastro", dados);
       console.log("Usuário Cadastrado");
+    } catch (error) {
+      handleResponseError(error);
+    }
+  };
+
+  // método de edição
+
+  edit = async ({
+    name,
+    username,
+    email,
+    phone,
+    addresses,
+    profileImg,
+    password,
+  }) => {
+    const dados = new FormData();
+    dados.append("name", name);
+    dados.append("username", username);
+    dados.append("email", email);
+    dados.append("phone", phone);
+    dados.append("addresses", addresses);
+    // dados.append("birthDate", birthDate);
+    dados.append("profileImg", profileImg);
+    // dados.append("password", password);
+    // dados.append("favorites", favorites);
+    const token = getToken();
+
+    try {
+      //   const hasEmptyFields = isEmpty(username, password);
+      //   if (hasEmptyFields) {
+      //     throw new Error('Campos obrigatórios.')
+      //   }
+
+      await this.api.put("/users/edit", dados, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Usuário Editado");
     } catch (error) {
       handleResponseError(error);
     }
@@ -64,7 +116,7 @@ class authApi {
         username,
         password,
       });
-      console.log(data.authToken);
+
       storeToken(data.authToken);
     } catch (error) {
       handleResponseError(error);
@@ -74,21 +126,26 @@ class authApi {
   // método de verificação
   verify = async () => {
     // recupera o token que estiver armazenado no localStorage
-    const token = getToken();
+
     try {
       // faz a requisição no backend colocando o token na autorização dos headers.
       // esperamos a resposta ser as informações de dentro do token.
-      const { data } = await this.api.get("/user/auth/verify", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const { data } = await this.api.get("/user/auth/verify");
       return data.authenticatedUser;
+    } catch (error) {
+      handleResponseError(error);
+    }
+  };
+
+  // método de deletar
+  delete = async () => {
+    try {
+      await this.api.delete("/users");
     } catch (error) {
       handleResponseError(error);
     }
   };
 }
 
-const UserAuthApi = new authApi();
-export default UserAuthApi;
+const userApi = new UserApi();
+export default userApi;

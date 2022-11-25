@@ -6,6 +6,7 @@ import services from "../../img/types/services.png";
 import superMarket from "../../img/types/supermarket.png";
 import domestico from "../../img/types/domestico.png";
 import tec from "../../img/types/tec.png";
+import fashion from "../../img/types/fashion.png";
 
 import events from "../../img/types/events.png";
 import drinks from "../../img/types/drinks.png";
@@ -39,18 +40,28 @@ const MainCard = ({ type }) => {
     case "Tecnologia":
       img = tec;
       break;
+    case "Moda":
+      img = fashion;
+      break;
 
     default:
       break;
   }
 
   return (
-    <Card>
-      <div className="main-card">
-        <img src={img} />
-        <h3>{type}</h3>
-      </div>
-    </Card>
+    <>
+      <Card
+        variant="outlined"
+        sx={{ borderRadius: "30px", maxWidth: "7rem", border: "none" }}
+      >
+        <div className="main-card">
+          <div className="main-card-img">
+            <img src={img} />
+          </div>
+        </div>
+      </Card>
+      <p className="card-name">{type}</p>
+    </>
   );
 };
 

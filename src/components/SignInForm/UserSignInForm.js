@@ -16,7 +16,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
-import authApi from "../../api/user.auth.api";
+import userApi from "../../api/user.api";
 
 import signinLogo from "../../img/icons/signin.png";
 import { NextPlan } from "@mui/icons-material";
@@ -49,13 +49,11 @@ export default function SignIn() {
   const navigate = useNavigate();
   const { setIsLoading, isLoading, authenticateUser } = useContext(AuthContext);
 
-  console.log("isloading in sigIn: ", isLoading);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     try {
-      await authApi.login({
+      await userApi.login({
         username,
         password,
       });

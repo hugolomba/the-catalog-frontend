@@ -18,7 +18,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
-import authApi from "../../api/company.auth.api";
+import authApi from "../../api/company.api";
 
 import signinLogo from "../../img/icons/signin.png";
 

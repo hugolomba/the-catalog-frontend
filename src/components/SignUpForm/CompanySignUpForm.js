@@ -19,7 +19,7 @@ import signupLogo from "../../img/icons/signup.png";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useState } from "react";
-import CompanyAuthApi from "../../api/company.auth.api";
+import CompanyAuthApi from "../../api/company.api";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
@@ -191,10 +191,15 @@ export default function SignUp() {
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
-                  <MenuItem value="Teste1">Teste 1</MenuItem>
-                  <MenuItem value="Teste2">Teste 2</MenuItem>
-                  <MenuItem value="Teste3">Teste 3</MenuItem>
-                  <MenuItem value="Teste4">Teste 4</MenuItem>
+                  <MenuItem value="Teste1">restaurante</MenuItem>
+                  <MenuItem value="Teste2">farmácia</MenuItem>
+                  <MenuItem value="Teste3">mercado</MenuItem>
+                  <MenuItem value="Teste4">eventos</MenuItem>
+                  <MenuItem value="Teste4">bebidas</MenuItem>
+                  <MenuItem value="Teste4">serviços</MenuItem>
+                  <MenuItem value="Teste4">serv. domésticos</MenuItem>
+                  <MenuItem value="Teste4">tecnologia</MenuItem>
+                  <MenuItem value="Teste4">moda</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12}>

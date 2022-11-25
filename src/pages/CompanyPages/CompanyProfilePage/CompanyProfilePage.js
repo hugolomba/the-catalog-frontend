@@ -4,16 +4,22 @@ import Avatar from "@mui/material/Avatar";
 import { Typography, Tab, Box } from "@mui/material/";
 import ProfileTabs from "../../../components/ProfileTabs";
 import { useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../context/auth.context";
 
-const ProfilePage = ({ companies }) => {
+import SpeedDial from "../../../components/SpeedDial";
+
+const ProfilePage = () => {
   const { company } = useParams();
+  const { companies } = useContext(AuthContext);
   console.log("companie Param: ", company);
 
-  const user = companies.find((c) => c.username === company);
+  const foundCompanie = companies.find((c) => c.username === company);
 
   return (
     <div className="profile-container">
       <SearchBar />
+
       <div className="profile-header">
         {/* <div className="cover-container">
           <h2>Capa da empresa ou to tipo de serviço</h2>
@@ -21,16 +27,17 @@ const ProfilePage = ({ companies }) => {
         <div className="top-profile">
           <Avatar
             alt="user avatar"
-            src={user && user.profileImg}
+            src={foundCompanie && foundCompanie.profileImg}
             sx={{ width: 100, height: 100 }}
           />
           <div>
-            <h1>{user && user.name}</h1>
+            <h1>{foundCompanie && foundCompanie.name}</h1>
             <h2>⋆⋆⋆⋆⋆</h2>
           </div>
         </div>
       </div>
-      <ProfileTabs user={user} />
+      <ProfileTabs user={foundCompanie} />
+      <SpeedDial sx={{ position: "absolute" }} />
     </div>
   );
 };

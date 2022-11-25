@@ -1,3 +1,4 @@
+import "./EditUserProfilePage.css";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -15,51 +16,53 @@ import signupLogo from "../../img/icons/signup.png";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import { useState } from "react";
-import userApi from "../../api/user.api";
+import { useEffect, useState } from "react";
+import UserAuthApi from "../../api/user.api";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
-// function Copyright(props) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {"Copyright © "}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{" "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
-
 const theme = createTheme();
 
-export default function SignUp() {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [addresses, setAddresses] = useState("");
+const EditUserProfilePage = () => {
+  const {
+    setIsLoading,
+    isLoading,
+    user,
+    authenticateUser,
+    logOutUser,
+    setUser,
+  } = useContext(AuthContext);
+  const [name, setName] = useState(user.name);
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
+  const [phone, setPhone] = useState(user.phone);
+  const [addresses, setAddresses] = useState(user.addresses);
   // const [birthDate, setBirthDate] = useState("");
-  const [profileImg, setProfileImg] = useState("");
-  const [password, setPassword] = useState("");
+  const [profileImg, setProfileImg] = useState(user.profileImg);
+  // const [password, setPassword] = useState(user.)
   //   const [confirmPassword, setConfirmPassword] = useState(null);
-  const { setIsLoading, isLoading } = useContext(AuthContext);
+
+  // useEffect(() => {
+  //   setName(user.name);
+  //   setUsername(user.username);
+  //   setEmail(user.email);
+  //   setPhone(user.phone);
+  //   setAddresses(user.addresses);
+  //   // const [birthDate, setBirthDate] = useState("");
+  //   setProfileImg(user.profileImg);
+  //   // setPassword(user.pass)
+  // }, [user]);
+
+  // console.log("user in edit: ", user);
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
 
     try {
       setIsLoading(true);
-      await userApi.signup({
+      const updatedUser = await UserAuthApi.edit({
         name,
         username,
         email,
@@ -67,14 +70,26 @@ export default function SignUp() {
         addresses,
         // birthDate,
         profileImg,
-        password,
+        // password,
       });
-      // console.log("Usuário criado: ", response);
-      setIsLoading(false);
-      navigate("/user/signin");
+      // setUser(updatedUser);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
+      authenticateUser();
+      // logOutUser();
+      // navigate("/user/signin");
     }
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      await UserAuthApi.delete();
+      logOutUser();
+      navigate("/");
+    } catch (error) {}
   };
 
   return (
@@ -94,20 +109,14 @@ export default function SignUp() {
             {/* <img src={signupLogo} />  */}
           </Avatar>
           <Typography component="h1" variant="h5">
-            Cadastro de Usuário
+            Editar Usuário
           </Typography>
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
-          >
+          <Box component="form" noValidate onSubmit={handleEdit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
                   name="name"
-                  required
                   fullWidth
                   id="name"
                   label="Nome Completo"
@@ -120,7 +129,6 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
                   fullWidth
                   id="username"
                   label="Nome de Usuário"
@@ -132,7 +140,6 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
                   fullWidth
                   id="email"
                   label="Email"
@@ -165,21 +172,21 @@ export default function SignUp() {
                 />
               </Grid>
               {/* <Grid item xs={12}>
-                <TextField
-                  //   required
-                  fullWidth
-                  type="date"
-                  id="birthDate"
-                  label="Data de Nascimento"
-                  name="birthDate"
-                  autoComplete="birthDate"
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                />
-              </Grid> */}
+                  <TextField
+                    //   
+                    fullWidth
+                    type="date"
+                    id="birthDate"
+                    label="Data de Nascimento"
+                    name="birthDate"
+                    autoComplete="birthDate"
+                    value={birthDate}
+                    onChange={(e) => setBirthDate(e.target.value)}
+                  />
+                </Grid> */}
               <Grid item xs={12}>
                 <TextField
-                  //   required
+                  //
                   fullWidth
                   name="profileImg"
                   label="Foto de Perfil"
@@ -189,9 +196,8 @@ export default function SignUp() {
                   onChange={(e) => setProfileImg(e.target.files[0])}
                 />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <TextField
-                  required
                   fullWidth
                   name="password"
                   label="Password"
@@ -201,15 +207,15 @@ export default function SignUp() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-              </Grid>
-              {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
               </Grid> */}
+              {/* <Grid item xs={12}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox value="allowExtraEmails" color="primary" />
+                    }
+                    label="I want to receive inspiration, marketing promotions and updates via email."
+                  />
+                </Grid> */}
             </Grid>
             <Button
               type="submit"
@@ -218,19 +224,25 @@ export default function SignUp() {
               sx={{ mt: 3, mb: 2 }}
               disable={isLoading.toString()}
             >
-              Cadastrar Usuário
+              Editar{" "}
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                {/* <LinkMUI href="/user/signin" variant="body2"> */}
-                <Link to="/user/signin">Already have an account? Sign in</Link>
-                {/* </LinkMUI> */}
-              </Grid>
-            </Grid>
+            <Button
+              onClick={handleDelete}
+              color="error"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disable={isLoading.toString()}
+            >
+              Apagar Perfil{" "}
+            </Button>
+            <Grid container justifyContent="flex-end"></Grid>
           </Box>
         </Box>
         {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
   );
-}
+};
+
+export default EditUserProfilePage;

@@ -3,12 +3,20 @@ import { isEmpty } from "../utils/validation.utils";
 import { handleResponseError } from "../utils/errors.utils";
 import { getToken, storeToken } from "../utils/token.utils";
 
-class authApi {
+class CompanyApi {
   constructor() {
     // configuração do axios para usar sempre como base ou o q está no arquivo `.env`
     // ou, caso não exista, o localhost:5000.
     this.api = axios.create({
-      baseURL: "https://final-project-backend-production.up.railway.app/",
+      baseURL: "http://localhost:5050/",
+    });
+
+    this.api.interceptors.request.use((req) => {
+      const token = getToken();
+      if (token) {
+        req.headers = { Authorization: `Bearer ${token}` };
+      }
+      return req;
     });
   }
 
@@ -55,6 +63,45 @@ class authApi {
     }
   };
 
+  // método de edição
+
+  edit = async ({
+    name,
+    username,
+    email,
+    phone,
+    addresses,
+    profileImg,
+    description,
+  }) => {
+    const dados = new FormData();
+    dados.append("name", name);
+    dados.append("username", username);
+    dados.append("email", email);
+    dados.append("phone", phone);
+    dados.append("addresses", addresses);
+    dados.append("description", description);
+    dados.append("profileImg", profileImg);
+    // dados.append("password", password);
+    // dados.append("favorites", favorites);
+    const token = getToken();
+
+    try {
+      //   const hasEmptyFields = isEmpty(username, password);
+      //   if (hasEmptyFields) {
+      //     throw new Error('Campos obrigatórios.')
+      //   }
+
+      await this.api.put("/companies/edit", dados, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      handleResponseError(error);
+    }
+  };
+
   // método de login
   // crie uma função de login que envia os dados de login para o nosso endpoint da API
   // em caso de sucesso, receberemos o token de volta, você pode usar a função auxiliar de armazenar o token no
@@ -95,7 +142,16 @@ class authApi {
       handleResponseError(error);
     }
   };
+
+  // método de deletar
+  delete = async () => {
+    try {
+      await this.api.delete("/companies");
+    } catch (error) {
+      handleResponseError(error);
+    }
+  };
 }
 
-const CompanyAuthApi = new authApi();
-export default CompanyAuthApi;
+const companyApi = new CompanyApi();
+export default companyApi;

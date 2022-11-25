@@ -2,6 +2,18 @@
   width: 100%;
 }
 
+.home-container h1 {
+  margin-bottom: 0.7rem;
+}
+
+.home-container h3 {
+  margin: 0;
+}
+
 .services-container {
+  text-align: center;
+}
+
+.home-company-title {
   text-align: center;
 }

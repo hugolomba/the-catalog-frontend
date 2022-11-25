@@ -29,7 +29,7 @@ const Menu = ({ setMenuIsOpen }) => {
                 sx={{ width: 90, height: 90 }}
               />
             ) : (
-              <Avatar alt="" sx={{ width: 45, height: 45 }} />
+              <Avatar alt="" sx={{ width: 150, height: 150 }} />
             )}
             <span>
               {isLoggedIn
@@ -40,7 +40,7 @@ const Menu = ({ setMenuIsOpen }) => {
           {isLoggedIn ? (
             <div className="login-buttons-container">
               <Stack direction="row" spacing={2}>
-                <Link to={`/user/${user && user.username}`}>
+                <Link to={`/profile/${user && user.username}`}>
                   <Button
                     variant="contained"
                     onClick={() => {
@@ -50,6 +50,19 @@ const Menu = ({ setMenuIsOpen }) => {
                     Ver Perfil
                   </Button>
                 </Link>
+                <Link
+                  to={user.type === "user" ? "/user/edit/" : "/company/edit/"}
+                >
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      setMenuIsOpen(false);
+                    }}
+                  >
+                    Editar Perfil
+                  </Button>
+                </Link>
+
                 <Link to="/user/signin">
                   <Button
                     variant="contained"

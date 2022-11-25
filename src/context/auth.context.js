@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import userAuthApi from "../api/user.auth.api";
-import companyAuthApi from "../api/company.auth.api";
+import userAuthApi from "../api/user.api";
+import companyAuthApi from "../api/company.api";
 import { getToken, removeToken } from "../utils/token.utils";
+import axios from "axios";
 
 const AuthContext = createContext();
 
@@ -9,9 +10,7 @@ const AuthProviderWrapper = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState({ type: "0" });
-
-  // console.log("isLopggedIn: ", isLoggedIn);
-  // console.log("user: ", user);
+  const [companies, setCompanies] = useState([]);
 
   // função que chama a verificação para saber se o token ainda é válido
   const authenticateUser = async () => {
@@ -33,7 +32,7 @@ const AuthProviderWrapper = ({ children }) => {
     } catch (error) {
       // caso o token seja invalido ou acontecer qualquer erro na verificação
       // removemos o token e guardamos a informação que não existe usuário logado
-      console.log("erro context: ", error);
+
       removeToken();
       setIsLoggedIn(false);
       setUser(null);
@@ -81,7 +80,28 @@ const AuthProviderWrapper = ({ children }) => {
 
   useEffect(() => {
     authenticateUser();
+    axios
+      .get("https://final-project-backend-production.up.railway.app/companies")
+      .then((response) => setCompanies(response.data))
+      .catch((error) => console.log(error));
   }, []);
+
+  let categories = [];
+
+  const findCategories = (companies) => {
+    // companies &&
+    let allCategories = [];
+
+    companies.map((company) => {
+      allCategories.push(company.category[0]);
+
+      // if (categories.includes(company.category[0]))
+      // categories.push(company.category[0]);
+    });
+    const unique = new Set(allCategories);
+    categories = [...unique];
+  };
+  findCategories(companies);
 
   return (
     // devolvemos o autenticador, com as funções e valores relevantes para serem invocadas fora dele.
@@ -90,10 +110,13 @@ const AuthProviderWrapper = ({ children }) => {
         isLoggedIn,
         isLoading,
         user,
+        setUser,
         authenticateUser,
         authenticateCompany,
         logOutUser,
         setIsLoading,
+        companies,
+        categories,
       }}
     >
       {children}

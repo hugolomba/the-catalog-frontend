@@ -7,11 +7,19 @@ import { Button, Stack } from "@mui/material/";
 import { Add, Edit } from "@mui/icons-material/";
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+
 const CompanyHome = () => {
+  const { categories, user } = useContext(AuthContext);
+
   return (
     <div className="home-container">
       <SearchBar />
-      <h1>Painel de Controle ⚙️</h1>
+      <div className="home-company-title">
+        <h1>Painel de Controle ⚙️</h1>
+        <h3>{user && user.name}</h3>
+      </div>
       <div className="services-container">
         {/* <h2>Painel de Controle ⚙️</h2> */}
         <div className="add-service-container">

@@ -5,7 +5,12 @@ import MainCard from "../../components/MainCard/MainCard";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+
 const UserHome = () => {
+  const { categories, user } = useContext(AuthContext);
+
   return (
     <div className="home-container">
       {/* <div className="home-emp-buttons">
@@ -19,22 +24,36 @@ const UserHome = () => {
           </div> */}
 
       <SearchBar />
-      <h1>Página Inicial de Usuário</h1>
+      <h1>
+        {/* {user ? `Bem vindo, ${user.name.split(" ")[0]}! 👋` : `Bem vindo! 👋`}{" "} */}
+      </h1>
       <MainBanner />
 
       <div className="services-container">
         <h3>Categorias de serviços</h3>
         <div className="cards">
-          <Link to="/companies/category/Test1">
+          {categories.map((category) => {
+            return (
+              <Link
+                key={categories.indexOf(category)}
+                to={`/category/${category}`}
+              >
+                <MainCard type={category} />
+              </Link>
+            );
+          })}
+          {/* <Link to="/companies/category/Test1">
             <MainCard type={"Restaurante"} />
           </Link>
+          <MainCard type={"Moda"} />
           <MainCard type={"Farmácia"} />
+
           <MainCard type={"Mercado"} />
           <MainCard type={"Eventos"} />
           <MainCard type={"Bebidas"} />
           <MainCard type={"Serviços"} />
           <MainCard type={"Serv. Domésticos"} />
-          <MainCard type={"Tecnologia"} />
+          <MainCard type={"Tecnologia"} /> */}
         </div>
       </div>
     </div>
