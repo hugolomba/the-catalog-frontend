@@ -2,7 +2,15 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1.5rem 1rem;
+  padding: 1.5rem 1rem;
+}
+
+nav a {
+  color: #565555;
+}
+
+nav h1 {
+  font-size: 3rem;
 }
 
 .side-menu {

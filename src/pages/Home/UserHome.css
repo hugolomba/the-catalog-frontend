@@ -1,3 +1,8 @@
 .home-container h1 {
   text-align: center;
+  color: #565555;
+}
+
+.services-container h3 {
+  color: #565555;
 }

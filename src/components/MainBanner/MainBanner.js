@@ -12,10 +12,10 @@ const MainBanner = () => {
       }}
     >
       <div className="main-banner">
-        <h3>
+        <p>
           Main Banner <br /> Pega as informações de ofertas das emopresas,
           apenas as ultimas cadastradas
-        </h3>
+        </p>
       </div>
     </Card>
   );

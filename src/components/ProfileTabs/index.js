@@ -11,6 +11,8 @@ import { Paper, Stack, Box, Typography, Tab, Tabs } from "@mui/material/";
 import { styled } from "@mui/material/styles";
 import OfferCard from "../ClothesOfferCard";
 
+import { Instagram, WhatsApp } from "@mui/icons-material/";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -81,16 +83,42 @@ export default function BasicTabs({ company }) {
             {company && company.category[0]}
           </Item> */}
           <Item>{company && company.description}</Item>
-          <Item>
-            <h3>Telefone:</h3>
-            {company && company.phone}
-          </Item>
+          <a href={`tel:${company.phone}`}>
+            <Item>
+              <h3>Telefone:</h3>
+              {company && company.phone}
+            </Item>
+          </a>
           <Item>
             <h3>Endereço:</h3>
             {company && company.addresses}
           </Item>
           <Item>
-            <h3>Rede Social e Site:</h3>
+            <h3>Redes Sociais:</h3>
+            <div className="profile-social-icons-container">
+              <a
+                target="_blank"
+                href={`https://www.instagram.com/${company.instagram}`}
+              >
+                <div className="profile-social-icons">
+                  <span>
+                    <Instagram />
+                  </span>
+                  @{company.instagram}
+                </div>
+              </a>
+              <a
+                target="_blank"
+                href={`https://api.whatsapp.com/send?phone=${company.whatsapp}`}
+              >
+                <div className="profile-social-icons">
+                  <span>
+                    <WhatsApp />
+                  </span>
+                  {company.whatsapp}
+                </div>
+              </a>
+            </div>
           </Item>
         </Stack>
       </TabPanel>

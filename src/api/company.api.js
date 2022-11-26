@@ -39,6 +39,8 @@ class CompanyApi {
     services,
     description,
     offers,
+    instagram,
+    whatsapp,
   }) => {
     const dados = new FormData();
     dados.append("name", name);
@@ -53,6 +55,8 @@ class CompanyApi {
     dados.append("password", password);
     // dados.append("services", services);
     dados.append("description", description);
+    dados.append("instagram", instagram);
+    dados.append("whatsapp", whatsapp);
     // dados.append("offers", offers);
     try {
       //   const hasEmptyFields = isEmpty(username, password);
@@ -76,6 +80,8 @@ class CompanyApi {
     addresses,
     profileImg,
     description,
+    instagram,
+    whatsapp,
   }) => {
     const dados = new FormData();
     dados.append("name", name);
@@ -85,6 +91,8 @@ class CompanyApi {
     dados.append("addresses", addresses);
     dados.append("description", description);
     dados.append("profileImg", profileImg);
+    dados.append("instagram", instagram);
+    dados.append("whatsapp", whatsapp);
     // dados.append("password", password);
     // dados.append("favorites", favorites);
     const token = getToken();

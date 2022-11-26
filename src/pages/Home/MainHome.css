@@ -28,4 +28,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
+  background-color: #ff7575;
+  padding-top: 1rem;
+  border-radius: 1rem;
 }

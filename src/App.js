@@ -15,6 +15,8 @@ import EditUserProfilePage from "./pages/EditUserProfilePage/EditUserProfilePage
 import EditCompanyPage from "./pages/EditCompanyPage/EditCompanyPage";
 import Copyright from "./components/Copyright";
 
+// import SearchBar from "material-ui-search-bar";
+
 function App() {
   const [companies, setCompanies] = useState([]);
 
@@ -55,6 +57,11 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      {/* <SearchBar
+        value={this.state.value}
+        onChange={(newValue) => this.setState({ value: newValue })}
+        onRequestSearch={() => doSomethingWith(this.state.value)}
+      /> */}
       <Routes>
         <Route path="/" element={<MainHome />} />
         <Route

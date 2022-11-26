@@ -39,7 +39,7 @@ export default function SignUp() {
 
   const [description, setDescription] = useState("");
   const [instagram, setInstagram] = useState("");
-  // const [whatsapp, setWhatsapp] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
 
   const { setIsLoading, isLoading } = useContext(AuthContext);
   const [alertIsOpen, setAlertIsOpen] = useState(false);
@@ -184,7 +184,7 @@ export default function SignUp() {
                     onChange={(e) => setInstagram(e.target.value)}
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
+                <Grid item xs={12}>
                   <TextField
                     fullWidth
                     id="whatsapp"
@@ -195,7 +195,7 @@ export default function SignUp() {
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
                   />
-                </Grid> */}
+                </Grid>
                 <Grid item xs={12}>
                   <TextField
                     fullWidth
@@ -233,7 +233,7 @@ export default function SignUp() {
                     <MenuItem value="Moda">Moda</MenuItem>
                   </TextField>
                 </Grid>
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                   <TextField
                     //   required
                     fullWidth
@@ -250,7 +250,7 @@ export default function SignUp() {
                     <MenuItem value="Teste3">Teste 3</MenuItem>
                     <MenuItem value="Teste4">Teste 4</MenuItem>
                   </TextField>
-                </Grid>
+                </Grid> */}
                 <Grid item xs={12}>
                   <TextField
                     //   required

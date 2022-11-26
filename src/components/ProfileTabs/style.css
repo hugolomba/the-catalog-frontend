@@ -1,0 +1,14 @@
+.profile-social-icons {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-social-icons-container a {
+  color: grey;
+}
+
+.profile-social-icons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

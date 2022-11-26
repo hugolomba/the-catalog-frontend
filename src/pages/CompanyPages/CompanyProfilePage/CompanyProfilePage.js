@@ -28,11 +28,11 @@ const ProfilePage = () => {
           <Avatar
             alt="user avatar"
             src={foundCompanie && foundCompanie.profileImg}
-            sx={{ width: 100, height: 100 }}
+            sx={{ width: 120, height: 120 }}
           />
           <div>
             <h1>{foundCompanie && foundCompanie.name}</h1>
-            <h2>⋆⋆⋆⋆⋆</h2>
+            {/* <h2>⋆⋆⋆⋆⋆</h2> */}
           </div>
         </div>
       </div>
