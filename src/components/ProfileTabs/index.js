@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { Paper, Stack, Box, Typography, Tab, Tabs } from "@mui/material/";
 import { styled } from "@mui/material/styles";
 import OfferCard from "../ClothesOfferCard";
+import ServiceCard from "../ServiceCard/ServiceCard";
 
 import { Instagram, WhatsApp } from "@mui/icons-material/";
 
@@ -82,18 +83,20 @@ export default function BasicTabs({ company }) {
             <h3>Categoria:</h3>
             {company && company.category[0]}
           </Item> */}
-          <Item>{company && company.description}</Item>
+          <Item elevation={0} sx={{ borderRadius: 5, padding: "2rem" }}>
+            {company && company.description}
+          </Item>
           <a href={`tel:${company.phone}`}>
-            <Item>
+            <Item elevation={0} sx={{ borderRadius: 5 }}>
               <h3>Telefone:</h3>
               {company && company.phone}
             </Item>
           </a>
-          <Item>
+          <Item elevation={0} sx={{ borderRadius: 5 }}>
             <h3>Endereço:</h3>
             {company && company.addresses}
           </Item>
-          <Item>
+          <Item elevation={0} sx={{ borderRadius: 5 }}>
             <h3>Redes Sociais:</h3>
             <div className="profile-social-icons-container">
               <a
@@ -124,7 +127,13 @@ export default function BasicTabs({ company }) {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        Item Three
+        <Stack value={value} index={0} direction="column" spacing={2}>
+          {/* <Item>{company && company.description}</Item> */}
+          {company &&
+            company.services.map((service) => {
+              return <ServiceCard key={service.name} service={service} />;
+            })}
+        </Stack>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Stack value={value} index={0} direction="column" spacing={2}>

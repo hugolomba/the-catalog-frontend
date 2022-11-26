@@ -26,6 +26,8 @@ export default function FormDialog({
   const [servicePrice, setServicePrice] = useState("");
   const [serviceImg, setServiceImg] = useState("");
 
+  console.log("user in editService: ", user);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     handleCloseEditService();
@@ -49,12 +51,12 @@ export default function FormDialog({
     <div>
       <Dialog open={openEditService} onClose={handleCloseEditService}>
         <DialogTitle>Edite seus serviços cadastrados</DialogTitle>
-        <DialogContent>
+        <DialogContent sx={{ backgroundColor: "grey" }}>
           {user[0] &&
             user[0].services.map((offer) => {
               return (
                 <Card
-                  elevation={5}
+                  elevation={1}
                   sx={{
                     maxWidth: 345,
                     heigth: 90,
@@ -62,16 +64,18 @@ export default function FormDialog({
                     gap: "1rem",
                     flexDirection: "column",
                     gap: "0",
+                    marginBottom: 2,
+                    marginTop: 1,
                   }}
                 >
                   <CardActionArea
                     sx={{
                       display: "flex",
-                      flexDirection: "column",
+                      flexDirection: "row",
                     }}
                   >
                     <CardMedia
-                      sx={{ width: "40%" }}
+                      sx={{ objectFit: "scale-down" }}
                       component="img"
                       height="80"
                       image={offer.serviceImg}
@@ -99,9 +103,8 @@ export default function FormDialog({
             })}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseEditService}>Cancelar</Button>
           <Button type="submit" onClick={handleSubmit}>
-            Adicionar
+            Fechar
           </Button>
         </DialogActions>
       </Dialog>

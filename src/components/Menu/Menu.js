@@ -40,16 +40,19 @@ const Menu = ({ setMenuIsOpen }) => {
           {isLoggedIn ? (
             <div className="login-buttons-container">
               <Stack direction="row" spacing={2}>
-                <Link to={`/profile/${user && user.username}`}>
-                  <Button
-                    variant="contained"
-                    onClick={() => {
-                      setMenuIsOpen(false);
-                    }}
-                  >
-                    Ver Perfil
-                  </Button>
-                </Link>
+                {user.type === "company" && (
+                  <Link to={`/profile/${user && user.username}`}>
+                    <Button
+                      variant="contained"
+                      onClick={() => {
+                        setMenuIsOpen(false);
+                      }}
+                    >
+                      Ver Perfil
+                    </Button>
+                  </Link>
+                )}
+
                 <Link
                   to={user.type === "user" ? "/user/edit/" : "/company/edit/"}
                 >

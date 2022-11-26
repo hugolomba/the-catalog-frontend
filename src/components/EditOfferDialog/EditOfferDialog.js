@@ -69,16 +69,17 @@ export default function FormDialog({
         <DialogTitle>Edite suas ofertas cadastradas</DialogTitle>
         {alert && <Alert severity="success">Oferta excluída!</Alert>}
         <DialogContent
-        //   sx={{
-        //     display: "flex",
-        //     flexDirection: "column",
-        //   }}
+          sx={{ backgroundColor: "grey" }}
+          //   sx={{
+          //     display: "flex",
+          //     flexDirection: "column",
+          //   }}
         >
           {user[0] &&
             user[0].offers.map((offer) => {
               return (
                 <Card
-                  elevation={5}
+                  elevation={1}
                   sx={{
                     maxWidth: 345,
                     heigth: 90,
@@ -86,16 +87,18 @@ export default function FormDialog({
                     gap: "1rem",
                     flexDirection: "column",
                     gap: "0",
+                    marginBottom: 2,
+                    marginTop: 1,
                   }}
                 >
                   <CardActionArea
                     sx={{
                       display: "flex",
-                      flexDirection: "column",
+                      flexDirection: "row",
                     }}
                   >
                     <CardMedia
-                      sx={{ width: "40%" }}
+                      sx={{ objectFit: "scale-down" }}
                       component="img"
                       height="80"
                       image={offer.offerImg}
@@ -123,9 +126,8 @@ export default function FormDialog({
             })}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseEditOffer}>Cancelar</Button>
           <Button type="submit" onClick={handleSubmit}>
-            Adicionar
+            Fechar
           </Button>
         </DialogActions>
       </Dialog>

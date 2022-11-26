@@ -37,7 +37,7 @@ const ProfilePage = () => {
         </div>
       </div>
       <ProfileTabs company={foundCompanie} />
-      <SpeedDial sx={{ position: "absolute" }} />
+      {/* <SpeedDial sx={{ position: "absolute" }} /> */}
     </div>
   );
 };

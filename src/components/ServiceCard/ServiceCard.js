@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-export default function MediaCard({ offer }) {
+export default function MediaCard({ service }) {
   return (
     <Card
       elevation={0}
@@ -16,18 +16,14 @@ export default function MediaCard({ offer }) {
         sx={{ objectFit: "scale-down" }}
         component="img"
         height="120"
-        image={offer && offer.offerImg}
+        image={service && service.serviceImg}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {offer && offer.offerName}
+          {service && service.serviceName}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {offer && offer.offerPrice}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Válido até: <br />
-          {offer && offer.expiration}
+          {service && service.servicePrice}
         </Typography>
       </CardContent>
       {/* <CardActions>
