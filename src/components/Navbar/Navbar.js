@@ -10,6 +10,7 @@ import { GrClose } from "react-icons/gr";
 import { useState } from "react";
 import closeIcon from "../../img/icons/close.png";
 import menuIcon from "../../img/icons/menu.png";
+import menuIcon2 from "../../img/icons/menu2.png";
 import profile from "../../img/profile.png";
 import { Link } from "react-router-dom";
 import Menu from "../Menu/Menu";
@@ -30,7 +31,7 @@ const Navbar = () => {
     <nav>
       <div className="side-menu">
         {/* {menuIsOpen ? <img src={closeIcon} /> : <img src={menuIcon} />} */}
-        <img src={menuIcon} onClick={() => setMenuIsOpen(true)} />
+        <img src={menuIcon2} onClick={() => setMenuIsOpen(true)} />
       </div>
       {menuIsOpen ? <Menu setMenuIsOpen={setMenuIsOpen} /> : ""}
       {/* <Menu /> */}

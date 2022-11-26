@@ -15,15 +15,15 @@ export default function MediaCard({ service }) {
       <CardMedia
         sx={{ objectFit: "scale-down" }}
         component="img"
-        height="120"
+        height="180"
         image={service && service.serviceImg}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {service && service.serviceName}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {service && service.servicePrice}
+        <Typography variant="h5" color="text.secondary">
+          <strong>R$ {service && service.servicePrice}</strong>
         </Typography>
       </CardContent>
       {/* <CardActions>

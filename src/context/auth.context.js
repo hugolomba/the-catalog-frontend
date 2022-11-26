@@ -161,6 +161,32 @@ const AuthProviderWrapper = ({ children }) => {
   };
   findCategories(companies);
 
+  console.log(categories);
+
+  // ofertas
+
+  let offersBanner = [];
+
+  const findOffersBanner = (companies) => {
+    // companies &&
+    let allOffersBanner = [];
+
+    companies.map((company) => {
+      company.offers.map((offer) => {
+        allOffersBanner.push(offer);
+      });
+
+      // if (offersBanner.includes(company.category[0]))
+      // offersBanner.push(company.category[0]);
+    });
+    // const unique = new Set(allOffersBanner);
+    // offersBanner = [...unique];
+    offersBanner = allOffersBanner;
+  };
+  findOffersBanner(companies);
+
+  console.log("offers arr: ", offersBanner);
+
   return (
     // devolvemos o autenticador, com as funções e valores relevantes para serem invocadas fora dele.
     <AuthContext.Provider

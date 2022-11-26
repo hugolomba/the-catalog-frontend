@@ -15,17 +15,17 @@ export default function MediaCard({ offer }) {
       <CardMedia
         sx={{ objectFit: "scale-down" }}
         component="img"
-        height="120"
+        height="180"
         image={offer && offer.offerImg}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {offer && offer.offerName}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {offer && offer.offerPrice}
+        <Typography variant="h5" color="text.secondary">
+          <strong>R$ {offer && offer.offerPrice}</strong>
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="h5" color="text.secondary">
           Válido até: <br />
           {offer && offer.expiration}
         </Typography>

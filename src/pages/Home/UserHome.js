@@ -86,7 +86,10 @@ const UserHome = () => {
           ? `Bem vindo, ${user.name && user.name.split(" ")[0]}! 👋`
           : `Bem vindo! 👋`}{" "}
       </h1>
-      <MainBanner />
+      <h4>
+        Aqui você encontra várias opções de serviços disponíveis na sua região
+      </h4>
+      {/* <MainBanner /> */}
 
       <div className="services-container">
         <h3>Categorias de serviços</h3>

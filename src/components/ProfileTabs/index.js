@@ -74,6 +74,7 @@ export default function BasicTabs({ company }) {
         >
           <Tab label="Sobre" {...a11yProps(0)} />
           <Tab label="Serviços" {...a11yProps(2)} />
+          {/* {company.type === "company" && <Tab label="Cardápio" {...a11yProps(2)} />} */}
           <Tab label="Ofertas" {...a11yProps(1)} />
         </Tabs>
       </Box>
