@@ -10,8 +10,8 @@ class CompanyApi {
     this.api = axios.create({
       baseURL:
         process.env.REACT_APP_API_URL_USER ||
-        // "https://final-project-backend-production.up.railway.app/",
-        "http://localhost:5050/",
+        "https://final-project-backend-production.up.railway.app/",
+      // "http://localhost:5050/",
     });
 
     this.api.interceptors.request.use((req) => {
