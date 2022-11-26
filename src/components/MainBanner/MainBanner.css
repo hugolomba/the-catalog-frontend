@@ -1,8 +1,9 @@
 .main-banner {
   /* border: 1px solid black; */
   width: 90vw;
-  height: 15vh;
+  height: 14vh;
   /* background-color: rgba(244, 244, 244, 0.665); */
+  padding-top: 2rem;
 }
 
 .main-banner h3 {

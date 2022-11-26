@@ -171,7 +171,7 @@ class CompanyApi {
     }
   };
 
-  // métdodo para adicionar serviço (fazer)
+  // métdodo para adicionar serviço
 
   addService = async ({ serviceName, servicePrice, serviceImg }) => {
     const dados = new FormData();
@@ -182,6 +182,49 @@ class CompanyApi {
 
     try {
       await this.api.post("/companies/service", dados);
+    } catch (error) {
+      handleResponseError(error);
+    }
+  };
+
+  // método para deletar um sevriço
+  removeService = async (serviceId) => {
+    console.log("serviceID: ", serviceId);
+    try {
+      await this.api.delete(`/companies/service/${serviceId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // método para deletar uma oferta
+  removeOffer = async (offerId) => {
+    console.log("offerID: ", offerId);
+    try {
+      await this.api.delete(`/companies/offer/${offerId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // lista ofertas da empresa logada
+
+  // update token
+
+  updateToken = async () => {
+    // recupera o token que estiver armazenado no localStorage
+    const token = getToken();
+    try {
+      // faz a requisição no backend colocando o token na autorização dos headers.
+      // esperamos a resposta ser as informações de dentro do token.
+      const { data } = await this.api.get("/company/auth/update-token", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      // console.log(data);
+      storeToken(data.authToken);
+      return data;
     } catch (error) {
       handleResponseError(error);
     }

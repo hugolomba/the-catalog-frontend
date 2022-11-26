@@ -23,24 +23,6 @@ import CompanyAuthApi from "../../api/company.api";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 
-// function Copyright(props) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {"Copyright © "}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{" "}
-//       {new Date().getFullYear()}
-//       {"."}
-//     </Typography>
-//   );
-// }
-
 const theme = createTheme();
 
 export default function SignUp() {
@@ -69,7 +51,7 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log("🚀 before ~ isLoading", isLoading);
+
     try {
       await CompanyAuthApi.signup({
         name,
@@ -88,9 +70,9 @@ export default function SignUp() {
       });
       setErrorAlertIsOpen(false);
       setIsLoading(false);
-      console.log("🚀 after ~ isLoading", isLoading);
+
       setAlertIsOpen(true);
-      const redirect = setTimeout(() => navigate("/company/signin"), 5000);
+      const redirect = setTimeout(() => navigate("/company/signin"), 3000);
     } catch (error) {
       errorMessage = error.message;
       setErrorAlertIsOpen(true);
@@ -105,7 +87,7 @@ export default function SignUp() {
       {errorAlertIsOpen && (
         <Alert severity="error">
           <AlertTitle>Error no Cadastro!</AlertTitle>
-          {`O cadastro de ${name} não foi realizado!`}
+          {`O cadastro de`} <strong>{name}</strong> {`não foi realizado!`}
           <p>{errorMessage}</p>
         </Alert>
       )}
@@ -113,7 +95,7 @@ export default function SignUp() {
       {alertIsOpen ? (
         <Alert severity="success">
           <AlertTitle>Cadastro Realizado!</AlertTitle>
-          {`O cadastro de ${name} foi cadastrado!`}
+          {`O cadastro de`} <strong>{name}</strong> {`foi cadastrado!`}
           <p>Redirecionando para a página de login de empresa ...</p>
         </Alert>
       ) : (
@@ -236,17 +218,19 @@ export default function SignUp() {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                   >
-                    <MenuItem selected value="Teste1">
-                      restaurante
+                    <MenuItem selected value="Restaurante">
+                      Restaurante
                     </MenuItem>
-                    <MenuItem value="Teste2">farmácia</MenuItem>
-                    <MenuItem value="Teste3">mercado</MenuItem>
-                    <MenuItem value="Teste4">eventos</MenuItem>
-                    <MenuItem value="Teste4">bebidas</MenuItem>
-                    <MenuItem value="Teste4">serviços</MenuItem>
-                    <MenuItem value="Teste4">serv. domésticos</MenuItem>
-                    <MenuItem value="Teste4">tecnologia</MenuItem>
-                    <MenuItem value="Teste4">moda</MenuItem>
+                    <MenuItem value="Farmácia">Farmácia</MenuItem>
+                    <MenuItem value="Mercado">Mercado</MenuItem>
+                    <MenuItem value="Eventos">Eventos</MenuItem>
+                    <MenuItem value="Bebidas">Bebidas</MenuItem>
+                    <MenuItem value="Serviços">Serviços</MenuItem>
+                    <MenuItem value="Serv. Domésticos">
+                      Serv. Domésticos
+                    </MenuItem>
+                    <MenuItem value="Tecnologia">Tecnologia</MenuItem>
+                    <MenuItem value="Moda">Moda</MenuItem>
                   </TextField>
                 </Grid>
                 <Grid item xs={12}>

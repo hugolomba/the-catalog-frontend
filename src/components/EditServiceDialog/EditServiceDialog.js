@@ -28,18 +28,21 @@ export default function FormDialog({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // try {
-    //   const data = await CompanyApi.addService({
-    //     serviceName,
-    //     servicePrice,
-    //     serviceImg,
-    //   });
     handleCloseEditService();
-    //   console.log("oferta adicionada: ", data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+
+    try {
+      // await CompanyApi.removeService(e.target.But)
+    } catch (error) {}
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    console.log(e.target.value);
+
+    try {
+      await CompanyApi.removeService(e.target.value);
+    } catch (error) {}
   };
 
   return (
@@ -88,7 +91,9 @@ export default function FormDialog({
                       </Typography> */}
                     </CardContent>
                   </CardActionArea>
-                  <Button>Remover</Button>
+                  <Button value={offer._id} onClick={handleDelete}>
+                    Remover
+                  </Button>
                 </Card>
               );
             })}

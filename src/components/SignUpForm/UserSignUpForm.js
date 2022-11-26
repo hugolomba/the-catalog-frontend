@@ -35,6 +35,8 @@ export default function SignUp() {
   const { setIsLoading, isLoading } = useContext(AuthContext);
 
   const [alertIsOpen, setAlertIsOpen] = useState(false);
+  const [errorAlertIsOpen, setErrorAlertIsOpen] = useState(false);
+  let errorMessage = "";
 
   const navigate = useNavigate();
 
@@ -54,23 +56,33 @@ export default function SignUp() {
         password,
       });
       // console.log("Usuário criado: ", response);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setAlertIsOpen(true);
-      setIsLoading(false);
 
-      const redirect = setTimeout(() => navigate("/user/signin"), 5000);
+      setIsLoading(true);
+    } catch (error) {
+      errorMessage = error.message;
+      setErrorAlertIsOpen(true);
+      setAlertIsOpen(true);
+    } finally {
+      setIsLoading(false);
+      setErrorAlertIsOpen(false);
+
+      setTimeout(() => navigate("/user/signin"), 5000);
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
+      {errorAlertIsOpen && (
+        <Alert severity="error">
+          <AlertTitle>Error no Cadastro!</AlertTitle>
+          {`O cadastro de`} <strong>{name}</strong> {`não foi realizado!`}
+          <p>{errorMessage}</p>
+        </Alert>
+      )}
       {alertIsOpen ? (
         <Alert severity="success">
           <AlertTitle>Cadastro Realizado!</AlertTitle>
-          {`O cadastro de ${name} foi cadastrado!`}
+          {`O cadastro de`} <strong>{name}</strong> {`foi cadastrado!`}
           <p>Redirecionando para a página de login ...</p>
         </Alert>
       ) : (

@@ -1,4 +1,3 @@
-import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -9,7 +8,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 import CompanyApi from "../../api/company.api";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 export default function FormDialog({
   openService,
@@ -20,6 +20,8 @@ export default function FormDialog({
   const [servicePrice, setServicePrice] = useState("");
   const [serviceImg, setServiceImg] = useState("");
 
+  const { updateCompany } = useContext(AuthContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -29,6 +31,7 @@ export default function FormDialog({
         servicePrice,
         serviceImg,
       });
+      updateCompany();
       handleCloseService();
       console.log("oferta adicionada: ", data);
     } catch (error) {

@@ -24,7 +24,7 @@ import { AuthContext } from "../../context/auth.context";
 const theme = createTheme();
 
 const EditCompanyPage = () => {
-  const { user, authenticateUser, logOutUser, setUser } =
+  const { user, authenticateUser, logOutUser, setUser, updateCompany } =
     useContext(AuthContext);
   const [name, setName] = useState(user.name);
   const [username, setUsername] = useState(user.username);
@@ -61,7 +61,8 @@ const EditCompanyPage = () => {
     } finally {
       setAlertIsOpen(true);
       setIsLoading(false);
-      authenticateUser();
+      updateCompany();
+      // authenticateUser();
       const redirect = setTimeout(() => navigate("/"), 5000);
       // logOutUser();
       // navigate("/user/signin");

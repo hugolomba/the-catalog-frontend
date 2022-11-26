@@ -31,6 +31,7 @@ const EditUserProfilePage = () => {
     authenticateUser,
     logOutUser,
     setUser,
+    updateUser,
   } = useContext(AuthContext);
   const [name, setName] = useState(user.name);
   const [username, setUsername] = useState(user.username);
@@ -65,8 +66,9 @@ const EditUserProfilePage = () => {
     } finally {
       setAlertIsOpen(true);
       setIsLoading(false);
-      authenticateUser();
-      const redirect = setTimeout(() => navigate("/"), 5000);
+      updateUser();
+      // authenticateUser();
+      setTimeout(() => navigate("/"), 5000);
     }
   };
 

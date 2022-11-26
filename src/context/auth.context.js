@@ -42,6 +42,35 @@ const AuthProviderWrapper = ({ children }) => {
     }
   };
 
+  const updateUser = async () => {
+    const storedToken = getToken();
+    // Ao começar a verificação dizemos ao context que estamos carregando a informação
+    setIsLoading(true);
+    try {
+      if (storedToken) {
+        // caso exista um token no localStorage, bate no endpoint de verificação
+        const response = await userAuthApi.updateToken();
+        setIsLoggedIn(true);
+        // a verificação que fizemos no backend nos devolve
+        // um objeto com o payload que existia dentro do token
+        setUser(response.payload);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    } catch (error) {
+      // caso o token seja invalido ou acontecer qualquer erro na verificação
+      // removemos o token e guardamos a informação que não existe usuário logado
+
+      removeToken();
+      setIsLoggedIn(false);
+      setUser(null);
+    } finally {
+      // independente de sucesso ou falha, terminamos a verificação
+      setIsLoading(false);
+    }
+  };
+
   //COMPANY
   // função que chama a verificação para saber se o token ainda é válido
   const authenticateCompany = async () => {
@@ -64,6 +93,35 @@ const AuthProviderWrapper = ({ children }) => {
       // caso o token seja invalido ou acontecer qualquer erro na verificação
       // removemos o token e guardamos a informação que não existe usuário logado
       console.log("erro context: ", error);
+      removeToken();
+      setIsLoggedIn(false);
+      setUser(null);
+    } finally {
+      // independente de sucesso ou falha, terminamos a verificação
+      setIsLoading(false);
+    }
+  };
+
+  const updateCompany = async () => {
+    const storedToken = getToken();
+    // Ao começar a verificação dizemos ao context que estamos carregando a informação
+    setIsLoading(true);
+    try {
+      if (storedToken) {
+        // caso exista um token no localStorage, bate no endpoint de verificação
+        const response = await companyAuthApi.updateToken();
+        setIsLoggedIn(true);
+        // a verificação que fizemos no backend nos devolve
+        // um objeto com o payload que existia dentro do token
+        setUser(response.payload);
+      } else {
+        setIsLoggedIn(false);
+        setUser(null);
+      }
+    } catch (error) {
+      // caso o token seja invalido ou acontecer qualquer erro na verificação
+      // removemos o token e guardamos a informação que não existe usuário logado
+
       removeToken();
       setIsLoggedIn(false);
       setUser(null);
@@ -117,6 +175,8 @@ const AuthProviderWrapper = ({ children }) => {
         setIsLoading,
         companies,
         categories,
+        updateUser,
+        updateCompany,
       }}
     >
       {children}

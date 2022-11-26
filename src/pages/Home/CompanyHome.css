@@ -1,5 +1,6 @@
 .services-container {
   width: 100%;
+  gap: 1.5rem;
 }
 
 .home-container h1 {

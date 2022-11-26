@@ -25,7 +25,9 @@ const UserHome = () => {
 
       <SearchBar />
       <h1>
-        {/* {user ? `Bem vindo, ${user.name.split(" ")[0]}! 👋` : `Bem vindo! 👋`}{" "} */}
+        {user
+          ? `Bem vindo, ${user.name && user.name.split(" ")[0]}! 👋`
+          : `Bem vindo! 👋`}{" "}
       </h1>
       <MainBanner />
 

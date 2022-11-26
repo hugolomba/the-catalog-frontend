@@ -1,4 +1,3 @@
-import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -11,10 +10,12 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import Alert from "@mui/material/Alert";
 
 import CompanyApi from "../../api/company.api";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 export default function FormDialog({
   openEditOffer,
@@ -26,6 +27,10 @@ export default function FormDialog({
   const [servicePrice, setServicePrice] = useState("");
   const [serviceImg, setServiceImg] = useState("");
 
+  const [alert, setAlert] = useState(false);
+
+  const { updateCompany } = useContext(AuthContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,6 +40,7 @@ export default function FormDialog({
     //     servicePrice,
     //     serviceImg,
     //   });
+
     handleCloseEditOffer();
     //   console.log("oferta adicionada: ", data);
     // } catch (error) {
@@ -42,10 +48,26 @@ export default function FormDialog({
     // }
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    console.log(e.target.value);
+
+    try {
+      await CompanyApi.removeOffer(e.target.value);
+      setAlert(true);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      const myTimeout = setTimeout(setAlert(false), 4000);
+    }
+  };
+
   return (
     <div>
       <Dialog open={openEditOffer} onClose={handleCloseEditOffer}>
         <DialogTitle>Edite suas ofertas cadastradas</DialogTitle>
+        {alert && <Alert severity="success">Oferta excluída!</Alert>}
         <DialogContent
         //   sx={{
         //     display: "flex",
@@ -93,7 +115,9 @@ export default function FormDialog({
                       </Typography> */}
                     </CardContent>
                   </CardActionArea>
-                  <Button>Remover</Button>
+                  <Button value={offer._id} onClick={handleDelete}>
+                    Remover
+                  </Button>
                 </Card>
               );
             })}
