@@ -78,9 +78,7 @@ export default function SignIn() {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1 }} src={signinLogo}>
-          {/* <LockOutlinedIcon /> */}
-        </Avatar>
+        <Avatar sx={{ m: 1 }} src={signinLogo}></Avatar>
         <Typography component="h1" variant="h5">
           Login de Usuário
         </Typography>
@@ -124,18 +122,24 @@ export default function SignIn() {
           >
             Login de Usuário
           </Button>
+
           <Grid container>
-            <Grid item xs>
-              <Link to="#">Esqueceu a senha?</Link>
-            </Grid>
             <Grid item>
-              {/* <LinkMUI variant="body2"> */}
               <Link to="/user/signup">
                 Ainda não tem cadastro? Cadastre-se!
               </Link>
-              {/* </LinkMUI> */}
             </Grid>
           </Grid>
+          <Link to="/company/signup">
+            <Button
+              fullWidth
+              // variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              disabled={isLoading}
+            >
+              É uma empresa? Entre Aqui!
+            </Button>
+          </Link>
         </Box>
       </Box>
       <Copyright sx={{ mt: 8, mb: 4 }} />

@@ -24,11 +24,15 @@
 }
 
 .cards {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   background-color: #ff7575;
   padding-top: 1rem;
+  /* padding: 2
+  rem; */
+  /* margin: 1rem; */
   border-radius: 1rem;
 }

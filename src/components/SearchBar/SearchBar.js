@@ -8,12 +8,10 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { Button } from "@mui/material";
 
-// import Paper from "@mui/material/Paper";
-// import InputBase from "@mui/material/InputBase";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-// import SearchIcon from "@mui/icons-material/Search";
+
 import DirectionsIcon from "@mui/icons-material/Directions";
 
 const SearchBar = () => {
@@ -28,28 +26,16 @@ const SearchBar = () => {
   };
 
   return (
-    // <Paper>
-    //   <div id="divBusca">
-    //     <input
-    //       type="text"
-    //       id="txtBusca"
-    //       placeholder="Busque o que deseja..."
-    //       value={search}
-    //       onChange={(e) => setSearch(e.target.value)}
-    //     />
-    //     <button id="btnBusca" onClick={handleSubmit}>
-    //       Buscar
-    //     </button>
-    //   </div>
-    // </Paper>
     <Paper
       component="form"
       elevation={1}
-      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 400 }}
+      sx={{
+        p: "2px 4px",
+        display: "flex",
+        alignItems: "center",
+        width: "100%",
+      }}
     >
-      {/* <IconButton sx={{ p: "10px" }} aria-label="menu">
-        <MenuIcon />
-      </IconButton> */}
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Encontre um serviço"

@@ -2,7 +2,6 @@ import axios from "axios";
 import { isEmpty } from "../utils/validation.utils";
 import { handleResponseError } from "../utils/errors.utils";
 import { getToken, storeToken } from "../utils/token.utils";
-import { NextPlan } from "@mui/icons-material";
 
 class UserApi {
   constructor() {
@@ -63,15 +62,7 @@ class UserApi {
 
   // método de edição
 
-  edit = async ({
-    name,
-    username,
-    email,
-    phone,
-    addresses,
-    profileImg,
-    password,
-  }) => {
+  edit = async ({ name, username, email, phone, addresses, profileImg }) => {
     const dados = new FormData();
     dados.append("name", name);
     dados.append("username", username);

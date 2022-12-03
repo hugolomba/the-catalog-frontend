@@ -1,9 +1,7 @@
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -23,29 +21,12 @@ export default function FormDialog({
   handleCloseEditOffer,
   user,
 }) {
-  const [serviceName, setServiceName] = useState("");
-  const [servicePrice, setServicePrice] = useState("");
-  const [serviceImg, setServiceImg] = useState("");
-
   const [alert, setAlert] = useState(false);
-
-  const { updateCompany } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const data = await CompanyApi.addService({
-    //     serviceName,
-    //     servicePrice,
-    //     serviceImg,
-    //   });
-
     handleCloseEditOffer();
-    //   console.log("oferta adicionada: ", data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   const handleDelete = async (e) => {
@@ -59,7 +40,7 @@ export default function FormDialog({
     } catch (error) {
       console.log(error);
     } finally {
-      const myTimeout = setTimeout(setAlert(false), 4000);
+      setTimeout(setAlert(false), 4000);
     }
   };
 
@@ -68,13 +49,7 @@ export default function FormDialog({
       <Dialog open={openEditOffer} onClose={handleCloseEditOffer}>
         <DialogTitle>Edite suas ofertas cadastradas</DialogTitle>
         {alert && <Alert severity="success">Oferta excluída!</Alert>}
-        <DialogContent
-          sx={{ backgroundColor: "grey" }}
-          //   sx={{
-          //     display: "flex",
-          //     flexDirection: "column",
-          //   }}
-        >
+        <DialogContent sx={{ backgroundColor: "grey" }}>
           {user[0] &&
             user[0].offers.map((offer) => {
               return (
@@ -84,7 +59,7 @@ export default function FormDialog({
                     maxWidth: 345,
                     heigth: 90,
                     display: "flex",
-                    gap: "1rem",
+
                     flexDirection: "column",
                     gap: "0",
                     marginBottom: 2,
@@ -111,11 +86,6 @@ export default function FormDialog({
                       <Typography gutterBottom variant="h5" component="div">
                         R$ {offer.offerPrice}
                       </Typography>
-                      {/* <Typography variant="body2" color="text.secondary">
-                        Lizards are a widespread group of squamate reptiles,
-                        with over 6,000 species, ranging across all continents
-                        except Antarctica
-                      </Typography> */}
                     </CardContent>
                   </CardActionArea>
                   <Button value={offer._id} onClick={handleDelete}>

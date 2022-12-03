@@ -2,11 +2,7 @@ import "./style.css";
 
 import * as React from "react";
 import PropTypes from "prop-types";
-// import Tabs from "@mui/material/Tabs";
-// import Tab from "@mui/material/Tab";
-// import Typography from "@mui/material/Typography";
-// import Box from "@mui/material/Box";
-// import Stack from "@mui/material/Stack";
+
 import { Paper, Stack, Box, Typography, Tab, Tabs } from "@mui/material/";
 import { styled } from "@mui/material/styles";
 import OfferCard from "../ClothesOfferCard";
@@ -74,16 +70,12 @@ export default function BasicTabs({ company }) {
         >
           <Tab label="Sobre" {...a11yProps(0)} />
           <Tab label="Serviços" {...a11yProps(2)} />
-          {/* {company.type === "company" && <Tab label="Cardápio" {...a11yProps(2)} />} */}
+
           <Tab label="Ofertas" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel component="div" value={value} index={0}>
         <Stack value={value} index={0} direction="column" spacing={2}>
-          {/* <Item>
-            <h3>Categoria:</h3>
-            {company && company.category[0]}
-          </Item> */}
           <Item elevation={0} sx={{ borderRadius: 5, padding: "2rem" }}>
             {company && company.description}
           </Item>
@@ -129,7 +121,6 @@ export default function BasicTabs({ company }) {
 
       <TabPanel value={value} index={1}>
         <Stack value={value} index={0} direction="column" spacing={2}>
-          {/* <Item>{company && company.description}</Item> */}
           {company &&
             company.services.map((service) => {
               return <ServiceCard key={service.name} service={service} />;
@@ -138,7 +129,6 @@ export default function BasicTabs({ company }) {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Stack value={value} index={0} direction="column" spacing={2}>
-          {/* <Item>{company && company.description}</Item> */}
           {company &&
             company.offers.map((offer) => {
               return <OfferCard key={offer.name} offer={offer} />;

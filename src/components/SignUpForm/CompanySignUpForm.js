@@ -4,13 +4,11 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import LinkMUI from "@mui/material/Link";
+
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
 import { AlertTitle, Alert, Typography } from "@mui/material/";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -66,13 +64,12 @@ export default function SignUp() {
         password,
         description,
         instagram,
-        // whatsapp,
       });
       setErrorAlertIsOpen(false);
       setIsLoading(false);
 
       setAlertIsOpen(true);
-      const redirect = setTimeout(() => navigate("/company/signin"), 3000);
+      setTimeout(() => navigate("/company/signin"), 3000);
     } catch (error) {
       errorMessage = error.message;
       setErrorAlertIsOpen(true);
@@ -109,10 +106,10 @@ export default function SignUp() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, width: 50, height: 50 }} src={signupLogo}>
-              {/* <LockOutlinedIcon /> */}
-              {/* <img src={signupLogo} />  */}
-            </Avatar>
+            <Avatar
+              sx={{ m: 1, width: 50, height: 50 }}
+              src={signupLogo}
+            ></Avatar>
             <Typography component="h1" variant="h5">
               Cadastro de Empresa
             </Typography>
@@ -132,8 +129,6 @@ export default function SignUp() {
                     id="name"
                     label="Nome Completo"
                     autoFocus
-                    //   error
-                    //   helperText="Incorrect entry."
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -226,6 +221,7 @@ export default function SignUp() {
                     <MenuItem value="Eventos">Eventos</MenuItem>
                     <MenuItem value="Bebidas">Bebidas</MenuItem>
                     <MenuItem value="Serviços">Serviços</MenuItem>
+                    <MenuItem value="Const. Civil">Const. Civil</MenuItem>
                     <MenuItem value="Serv. Domésticos">
                       Serv. Domésticos
                     </MenuItem>
@@ -233,24 +229,7 @@ export default function SignUp() {
                     <MenuItem value="Moda">Moda</MenuItem>
                   </TextField>
                 </Grid>
-                {/* <Grid item xs={12}>
-                  <TextField
-                    //   required
-                    fullWidth
-                    select
-                    id="subcategory"
-                    label="Subcategoria"
-                    name="subcategory"
-                    autoComplete="subcategory"
-                    value={subcategory}
-                    onChange={(e) => setSubcategory(e.target.value)}
-                  >
-                    <MenuItem value="Teste1">Teste 1</MenuItem>
-                    <MenuItem value="Teste2">Teste 2</MenuItem>
-                    <MenuItem value="Teste3">Teste 3</MenuItem>
-                    <MenuItem value="Teste4">Teste 4</MenuItem>
-                  </TextField>
-                </Grid> */}
+
                 <Grid item xs={12}>
                   <TextField
                     //   required
@@ -265,7 +244,6 @@ export default function SignUp() {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    //   required
                     fullWidth
                     name="description"
                     label="Descrição"
@@ -289,40 +267,6 @@ export default function SignUp() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Grid>
-                {/* <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  name="services"
-                  label="Serviços"
-                  type="services"
-                  id="services"
-                  autoComplete="services"
-                  value={services}
-                  onChange={(e) => setServices(e.target.value)}
-                />
-  
-              </Grid> */}
-                {/* <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  name="offers"
-                  label="Ofertas"
-                  type="offers"
-                  id="offers"
-                  autoComplete="offers"
-                  value={offers}
-                  onChange={(e) => setOffers(e.target.value)}
-                />
-              
-              </Grid> */}
-                {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid> */}
               </Grid>
               <Button
                 type="submit"
@@ -335,16 +279,13 @@ export default function SignUp() {
               </Button>
               <Grid container justifyContent="flex-end">
                 <Grid item>
-                  {/* <LinkMUI href="/user/signin" variant="body2"> */}
                   <Link to="/company/signin">
                     Already have an account? Sign in
                   </Link>
-                  {/* </LinkMUI> */}
                 </Grid>
               </Grid>
             </Box>
           </Box>
-          {/* <Copyright sx={{ mt: 5 }} /> */}
         </Container>
       )}
     </ThemeProvider>

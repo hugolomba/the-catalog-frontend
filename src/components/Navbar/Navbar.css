@@ -17,12 +17,13 @@ nav h1 {
   font-size: 1.8rem;
   display: flex;
   gap: 0.8rem;
+  align-items: center;
 }
 
-.side-menu img:first-child {
+/* .side-menu img:first-child {
   width: 2rem;
   height: auto;
-}
+} */
 
 .logo {
   width: 13rem;

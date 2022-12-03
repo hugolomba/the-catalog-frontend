@@ -79,9 +79,7 @@ export default function SignIn() {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1 }} src={signinLogo}>
-          {/* <LockOutlinedIcon /> */}
-        </Avatar>
+        <Avatar sx={{ m: 1 }} src={signinLogo}></Avatar>
         <Typography component="h1" variant="h5">
           Login de Empresa
         </Typography>

@@ -1,5 +1,4 @@
 import { Typography } from "@mui/material/";
-import { Link } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -12,6 +11,7 @@ function Copyright(props) {
       {"Copyright © "}
       <a
         target="_blank"
+        rel="noreferrer"
         color="inherit"
         href="https://www.linkedin.com/in/hugolomba/"
       >

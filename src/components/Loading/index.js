@@ -13,7 +13,6 @@ const index = () => {
   return (
     <DoubleBubble
       text={"Loading..."}
-      // bgColor={"#F0A500"}
       center={false}
       width={"150px"}
       height={"150px"}

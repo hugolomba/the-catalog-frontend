@@ -1,23 +1,17 @@
 import "./CompanyHome.css";
 
 import SearchBar from "../../components/SearchBar/SearchBar";
-import MainBanner from "../../components/MainBanner/MainBanner";
-import MainCard from "../../components/MainCard/MainCard";
 import { Button, Stack } from "@mui/material/";
 import { Add, Edit } from "@mui/icons-material/";
-import { Link } from "react-router-dom";
-
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
-
 import AddOfferDialog from "../../components/AddOfferDialog/AddOfferDialog";
 import AddServiceDialog from "../../components/AddServiceDialog/AddServiceDialog";
-
 import EditServiceDialog from "../../components/EditServiceDialog/EditServiceDialog";
 import EditOfferDialog from "../../components/EditOfferDialog/EditOfferDialog";
 
 const CompanyHome = () => {
-  const { categories, user, companies } = useContext(AuthContext);
+  const { user, companies } = useContext(AuthContext);
 
   console.log("user from context in company home: ", user);
 
@@ -77,7 +71,6 @@ const CompanyHome = () => {
         <h3>{user && user.name}</h3>
       </div>
       <div className="services-container">
-        {/* <h2>Painel de Controle ⚙️</h2> */}
         <div className="add-service-container">
           <h2>Adicionar Serviço</h2>
           <Stack direction="row" spacing={2}>

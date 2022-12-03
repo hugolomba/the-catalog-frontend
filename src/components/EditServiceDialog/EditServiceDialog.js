@@ -1,10 +1,8 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -14,18 +12,11 @@ import { CardActionArea } from "@mui/material";
 
 import CompanyApi from "../../api/company.api";
 
-import { useState } from "react";
-
 export default function FormDialog({
   openEditService,
-  handleClickOpenEditService,
   handleCloseEditService,
   user,
 }) {
-  const [serviceName, setServiceName] = useState("");
-  const [servicePrice, setServicePrice] = useState("");
-  const [serviceImg, setServiceImg] = useState("");
-
   console.log("user in editService: ", user);
 
   const handleSubmit = async (e) => {
@@ -33,7 +24,6 @@ export default function FormDialog({
     handleCloseEditService();
 
     try {
-      // await CompanyApi.removeService(e.target.But)
     } catch (error) {}
   };
 
@@ -61,7 +51,7 @@ export default function FormDialog({
                     maxWidth: 345,
                     heigth: 90,
                     display: "flex",
-                    gap: "1rem",
+
                     flexDirection: "column",
                     gap: "0",
                     marginBottom: 2,
@@ -88,11 +78,6 @@ export default function FormDialog({
                       <Typography gutterBottom variant="h5" component="div">
                         R$ {offer.servicePrice}
                       </Typography>
-                      {/* <Typography variant="body2" color="text.secondary">
-                        Lizards are a widespread group of squamate reptiles,
-                        with over 6,000 species, ranging across all continents
-                        except Antarctica
-                      </Typography> */}
                     </CardContent>
                   </CardActionArea>
                   <Button value={offer._id} onClick={handleDelete}>

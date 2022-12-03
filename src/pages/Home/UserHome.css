@@ -1,11 +1,19 @@
+.welcome-container {
+  background-color: #3da5cb;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
 .home-container h1 {
   text-align: center;
-  color: #565555;
+  /* color: #565555; */
+  color: white;
 }
 
 .home-container h4 {
   text-align: center;
-  color: #565555;
+  /* color: #565555; */
+  color: white;
 }
 
 .services-container h3 {

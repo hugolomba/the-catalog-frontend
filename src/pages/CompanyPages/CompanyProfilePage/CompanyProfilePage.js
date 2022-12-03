@@ -1,13 +1,11 @@
 import "./CompanyProfilePage.css";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import Avatar from "@mui/material/Avatar";
-import { Typography, Tab, Box } from "@mui/material/";
+
 import ProfileTabs from "../../../components/ProfileTabs";
 import { useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../../context/auth.context";
-
-import SpeedDial from "../../../components/SpeedDial";
 
 const ProfilePage = () => {
   const { company } = useParams();
@@ -21,9 +19,6 @@ const ProfilePage = () => {
       <SearchBar />
 
       <div className="profile-header">
-        {/* <div className="cover-container">
-          <h2>Capa da empresa ou to tipo de serviço</h2>
-        </div> */}
         <div className="top-profile">
           <Avatar
             alt="user avatar"
@@ -32,12 +27,10 @@ const ProfilePage = () => {
           />
           <div>
             <h1>{foundCompanie && foundCompanie.name}</h1>
-            {/* <h2>⋆⋆⋆⋆⋆</h2> */}
           </div>
         </div>
       </div>
       <ProfileTabs company={foundCompanie} />
-      {/* <SpeedDial sx={{ position: "absolute" }} /> */}
     </div>
   );
 };

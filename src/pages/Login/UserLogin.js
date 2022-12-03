@@ -11,8 +11,6 @@ const Login = () => {
   return (
     <div className={isLoading ? "signin-form-container-loading" : ""}>
       {isLoading ? <Loading /> : <UserSigInForm />}
-      {/* <UserSigInForm /> */}
-      {/* <Loading /> */}
     </div>
   );
 };

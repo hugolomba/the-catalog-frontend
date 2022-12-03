@@ -7,6 +7,7 @@ import superMarket from "../../img/types/supermarket.png";
 import domestico from "../../img/types/domestico.png";
 import tec from "../../img/types/tec.png";
 import fashion from "../../img/types/fashion.png";
+import construction from "../../img/types/const.png";
 
 import events from "../../img/types/events.png";
 import drinks from "../../img/types/drinks.png";
@@ -42,6 +43,9 @@ const MainCard = ({ type }) => {
       break;
     case "Moda":
       img = fashion;
+      break;
+    case "Const. Civil":
+      img = construction;
       break;
 
     default:

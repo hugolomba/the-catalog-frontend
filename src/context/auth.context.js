@@ -150,7 +150,7 @@ const AuthProviderWrapper = ({ children }) => {
     // companies &&
     let allCategories = [];
 
-    companies.map((company) => {
+    companies.forEach((company) => {
       allCategories.push(company.category[0]);
 
       // if (categories.includes(company.category[0]))
@@ -171,8 +171,8 @@ const AuthProviderWrapper = ({ children }) => {
     // companies &&
     let allOffersBanner = [];
 
-    companies.map((company) => {
-      company.offers.map((offer) => {
+    companies.forEach((company) => {
+      company.offers.forEach((offer) => {
         allOffersBanner.push(offer);
       });
 
