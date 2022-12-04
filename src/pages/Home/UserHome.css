@@ -1,21 +1,31 @@
 .welcome-container {
   background-color: #3da5cb;
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
   padding: 1rem;
+  width: 100%;
+  background-color: #ffc62f;
 }
 
 .home-container h1 {
   text-align: center;
   /* color: #565555; */
-  color: white;
+  /* color: white; */
 }
 
 .home-container h4 {
   text-align: center;
   /* color: #565555; */
-  color: white;
+  /* color: white; */
 }
 
 .services-container h3 {
   color: #565555;
+}
+
+.top-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffc62f;
+  padding-bottom: 1.5rem;
 }

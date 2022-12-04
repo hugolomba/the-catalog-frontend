@@ -13,21 +13,24 @@ const UserHome = () => {
 
   return (
     <div className="home-container">
-      <SearchBar />
+      <div className="top-page">
+        <div className="welcome-container">
+          <h1>
+            {user
+              ? `Bem vindo, ${user.name && user.name.split(" ")[0]}! 👋`
+              : `Bem vindo! 👋`}{" "}
+          </h1>
+          <h4>
+            Aqui você encontra várias opções de serviços disponíveis na sua
+            região
+          </h4>
+        </div>
 
-      <div className="welcome-container">
-        <h1>
-          {user
-            ? `Bem vindo, ${user.name && user.name.split(" ")[0]}! 👋`
-            : `Bem vindo! 👋`}{" "}
-        </h1>
-        <h4>
-          Aqui você encontra várias opções de serviços disponíveis na sua região
-        </h4>
+        <SearchBar />
       </div>
 
       <div className="services-container">
-        <h3>Categorias de serviços</h3>
+        {/* <h3>Categorias de serviços</h3> */}
         <div className="cards">
           {categories.map((category) => {
             return (

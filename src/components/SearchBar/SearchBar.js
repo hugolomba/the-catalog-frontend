@@ -3,16 +3,11 @@ import Paper from "@mui/material/Paper";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { styled, alpha } from "@mui/material/styles";
+
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { Button } from "@mui/material";
 
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-
-import DirectionsIcon from "@mui/icons-material/Directions";
 
 const SearchBar = () => {
   const [search, setSearch] = useState();
@@ -33,7 +28,7 @@ const SearchBar = () => {
         p: "2px 4px",
         display: "flex",
         alignItems: "center",
-        width: "100%",
+        width: "90%",
       }}
     >
       <InputBase
