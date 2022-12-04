@@ -2,3 +2,8 @@
   color: black;
   font-weight: 400;
 }
+
+.copyright {
+  /* position: absolute; */
+  bottom: 0;
+}

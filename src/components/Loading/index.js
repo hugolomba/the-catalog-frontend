@@ -3,6 +3,7 @@ import {
   DoubleBubble,
   SlidingPebbles,
   DoubleOrbit,
+  HalfMalf,
 } from "react-spinner-animated";
 
 import "react-spinner-animated/dist/index.css";
@@ -11,7 +12,7 @@ import React from "react";
 
 const index = () => {
   return (
-    <DoubleBubble
+    <HalfMalf
       text={"Loading..."}
       center={false}
       width={"150px"}

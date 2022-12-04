@@ -130,7 +130,7 @@ export default function SignIn() {
               </Link>
             </Grid>
           </Grid>
-          <Link to="/company/signup">
+          <Link to="/company/signin">
             <Button
               fullWidth
               // variant="contained"

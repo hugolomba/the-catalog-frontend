@@ -30,7 +30,7 @@ const Navbar = () => {
       component="form"
       elevation={1}
       sx={{
-        p: "2px 4px",
+        // p: "2px 4px",
         display: "flex",
         alignItems: "center",
         width: "100%",

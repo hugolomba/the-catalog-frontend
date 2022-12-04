@@ -11,24 +11,33 @@ export default function MediaCard({ offer }) {
   return (
     <Card
       elevation={0}
-      sx={{ display: "flex", alignItems: "center", borderRadius: 3 }}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        borderRadius: 3,
+        flexDirection: "column",
+      }}
     >
+      <Typography
+        gutterBottom
+        variant="h4"
+        component="div"
+        sx={{ paddingTop: "1rem" }}
+      >
+        {offer && offer.offerName}
+      </Typography>
       <CardMedia
         sx={{ objectFit: "scale-down" }}
         component="img"
         height="180"
         image={offer && offer.offerImg}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {offer && offer.offerName}
-        </Typography>
+      <CardContent sx={{ width: "100%", textAlign: "center" }}>
         <Typography variant="h5" color="text.secondary">
           <strong>R$ {offer && offer.offerPrice}</strong>
         </Typography>
-        <Typography variant="h5" color="text.secondary">
-          Válido até: <br />
-          {offer && offer.expiration}
+        <Typography variant="h7" color="text.secondary">
+          Válido até: {offer && offer.expiration}
         </Typography>
       </CardContent>
     </Card>

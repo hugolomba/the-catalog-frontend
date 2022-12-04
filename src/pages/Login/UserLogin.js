@@ -5,6 +5,8 @@ import { AuthContext } from "../../context/auth.context";
 
 import Loading from "../../components/Loading";
 
+import Loading1 from "../../components/Loading1";
+
 const Login = () => {
   const { isLoading } = useContext(AuthContext);
 

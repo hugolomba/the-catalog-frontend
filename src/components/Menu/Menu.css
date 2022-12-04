@@ -9,16 +9,22 @@
   top: 0;
   width: 100vw;
   height: 100%;
-  background-color: #71bffe;
+  /* background-color: #71bffe; */
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .close-icon {
-  position: relative;
+  position: absolute;
   /* left: 0; */
-  top: 0;
-  right: -23rem;
-  width: 3rem;
-  height: auto;
+  top: 1rem;
+  right: 1rem;
+
   z-index: 100;
 }
 
@@ -35,8 +41,15 @@
   width: 100vw;
   height: 35vh;
   z-index: 11;
-  background-color: #abd9ff;
-  /* gap: 1rem; */
+  background-color: #7f7f7f;
+
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.9);
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .avatar-menu-login {

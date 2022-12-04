@@ -10,8 +10,21 @@ export default function MediaCard({ service }) {
   return (
     <Card
       elevation={0}
-      sx={{ display: "flex", alignItems: "center", borderRadius: 3 }}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        borderRadius: 3,
+        flexDirection: "column",
+      }}
     >
+      <Typography
+        gutterBottom
+        variant="h5"
+        component="div"
+        sx={{ paddingTop: "1rem" }}
+      >
+        {service && service.serviceName}
+      </Typography>
       <CardMedia
         sx={{ objectFit: "scale-down" }}
         component="img"
@@ -19,9 +32,6 @@ export default function MediaCard({ service }) {
         image={service && service.serviceImg}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {service && service.serviceName}
-        </Typography>
         <Typography variant="h5" color="text.secondary">
           <strong>R$ {service && service.servicePrice}</strong>
         </Typography>

@@ -64,7 +64,7 @@ const CompanyHome = () => {
   };
 
   return (
-    <div className="home-container">
+    <div className="home-company-container">
       <SearchBar />
       <div className="home-company-title">
         <h1>Painel de Controle ⚙️</h1>
@@ -113,14 +113,14 @@ const CompanyHome = () => {
             </Button>
           </Stack>
         </div>
-        <div className="rating-container">
+        {/* <div className="rating-container">
           <h2>Avaliações</h2>
           <Stack direction="row" spacing={2}>
             <Button size="small" variant="contained">
               Visualizar
             </Button>
           </Stack>
-        </div>
+        </div> */}
       </div>
       <AddOfferDialog
         open={openOffer}

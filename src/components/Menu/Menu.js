@@ -3,7 +3,7 @@ import closeIcon from "../../img/icons/close.png";
 import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
 import { Button, Stack } from "@mui/material/";
-import profile from "../../img/profile.png";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
@@ -13,9 +13,14 @@ const Menu = ({ setMenuIsOpen }) => {
 
   return (
     <div className="menu-container">
-      <img
+      {/* <img
         className="close-icon"
         src={closeIcon}
+        onClick={() => setMenuIsOpen(false)}
+      /> */}
+      <CloseIcon
+        sx={{ fontSize: "4rem", color: "#6e6c6c" }}
+        className="close-icon"
         onClick={() => setMenuIsOpen(false)}
       />
 
@@ -29,7 +34,7 @@ const Menu = ({ setMenuIsOpen }) => {
                 sx={{ width: 90, height: 90 }}
               />
             ) : (
-              <Avatar alt="" sx={{ width: 150, height: 150 }} />
+              <Avatar alt="" sx={{ width: 90, height: 90 }} />
             )}
             <span>
               {isLoggedIn
