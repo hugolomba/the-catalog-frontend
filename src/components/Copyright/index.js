@@ -1,25 +1,19 @@
 import { Typography } from "@mui/material/";
+import "./style.css";
 
-function Copyright(props) {
+function Copyright() {
   return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
+    <p className="copyright" align="center">
+      {"Copyright © "} {new Date().getFullYear()}
       <a
         target="_blank"
         rel="noreferrer"
-        color="inherit"
         href="https://www.linkedin.com/in/hugolomba/"
       >
-        Hugo Miranda Lomba
-      </a>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
+        {" "}
+        Hugo Miranda
+      </a>
+    </p>
   );
 }
 

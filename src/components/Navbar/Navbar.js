@@ -41,7 +41,7 @@ const Navbar = () => {
       <nav>
         <div className="side-menu">
           {/* <img src={menuIcon2} onClick={() => setMenuIsOpen(true)} /> */}
-          <MenuIcon onClick={() => setMenuIsOpen(true)} />
+          {/* <MenuIcon onClick={() => setMenuIsOpen(true)} /> */}
           <Link to="/">
             <img className="logo" src={logo6} />
           </Link>

@@ -56,8 +56,12 @@ const MainCard = ({ type }) => {
     <>
       <Card
         // variant="outlined"
-        elevation={4}
-        sx={{ borderRadius: "30px", maxWidth: "7rem", border: "none" }}
+        elevation={0}
+        sx={{
+          borderRadius: "30px",
+          maxWidth: "7rem",
+          border: "none",
+        }}
       >
         <div className="main-card">
           <div className="main-card-img">

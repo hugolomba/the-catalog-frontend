@@ -3,7 +3,15 @@ import "./style.css";
 import * as React from "react";
 import PropTypes from "prop-types";
 
-import { Paper, Stack, Box, Typography, Tab, Tabs } from "@mui/material/";
+import {
+  Paper,
+  Stack,
+  Box,
+  Typography,
+  Tab,
+  Tabs,
+  Divider,
+} from "@mui/material/";
 import { styled } from "@mui/material/styles";
 import OfferCard from "../ClothesOfferCard";
 import ServiceCard from "../ServiceCard/ServiceCard";
@@ -75,26 +83,35 @@ export default function BasicTabs({ company }) {
         </Tabs>
       </Box>
       <TabPanel component="div" value={value} index={0}>
-        <Stack value={value} index={0} direction="column" spacing={2}>
+        <Stack
+          value={value}
+          index={0}
+          direction="column"
+          spacing={2}
+          sx={{ width: "100%", backgroundColor: "white", padding: 0 }}
+        >
           <Item elevation={0} sx={{ borderRadius: 5, padding: "2rem" }}>
             {company && company.description}
           </Item>
-          <a href={`tel:${company.phone}`}>
+          <Divider />
+          <a Divideref={`tel:${company.phone}`}>
             <Item elevation={0} sx={{ borderRadius: 5 }}>
               <h3>Telefone:</h3>
               {company && company.phone}
             </Item>
           </a>
+          <Divider />
           <Item elevation={0} sx={{ borderRadius: 5 }}>
             <h3>Endereço:</h3>
             {company && company.addresses}
           </Item>
+          <Divider />
           <Item elevation={0} sx={{ borderRadius: 5 }}>
             <h3>Redes Sociais:</h3>
             <div className="profile-social-icons-container">
               <a
                 target="_blank"
-                href={`https://www.instagram.com/${company.instagram}`}
+                Divideref={`https://www.instagram.com/${company.instagram}`}
               >
                 <div className="profile-social-icons">
                   <span>
@@ -105,7 +122,7 @@ export default function BasicTabs({ company }) {
               </a>
               <a
                 target="_blank"
-                href={`https://api.whatsapp.com/send?phone=${company.whatsapp}`}
+                Divideref={`https://api.whatsapp.com/send?phone=${company.whatsapp}`}
               >
                 <div className="profile-social-icons">
                   <span>

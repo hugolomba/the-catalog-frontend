@@ -4,7 +4,11 @@
 }
 
 .profile-social-icons-container a {
-  color: grey;
+  /* color: grey; */
+  font-weight: 500;
+}
+
+.profile-social-icons {
 }
 
 .profile-social-icons-container {

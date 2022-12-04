@@ -9,7 +9,7 @@
   max-width: 7rem;
   object-fit: fill;
   /* margin: 0.5rem 0; */
-  background-color: rgba(244, 244, 244, 0.665);
+  background-color: rgb(244 244 244);
 }
 
 .main-card img {

@@ -2,7 +2,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem 0;
+  padding: 0.7rem 1rem 0.4rem;
   background-color: #ffc62f;
   width: 100%;
 }
@@ -28,6 +28,6 @@ nav h1 {
 } */
 
 .logo {
-  width: 9rem;
+  width: 10rem;
   height: auto;
 }
