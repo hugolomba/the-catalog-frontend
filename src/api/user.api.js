@@ -144,7 +144,7 @@ class UserApi {
       // faz a requisição no backend colocando o token na autorização dos headers.
       // esperamos a resposta ser as informações de dentro do token.
       const { data } = await this.api.get("/user/auth/update-token");
-      // console.log(data);
+
       storeToken(data.authToken);
       return data;
     } catch (error) {

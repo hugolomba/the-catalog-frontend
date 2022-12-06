@@ -128,7 +128,7 @@ class CompanyApi {
         username,
         password,
       });
-      console.log(data.authToken);
+
       storeToken(data.authToken);
     } catch (error) {
       handleResponseError(error);
@@ -147,7 +147,7 @@ class CompanyApi {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log(data);
+
       return data.authenticatedUser;
     } catch (error) {
       handleResponseError(error);
@@ -197,7 +197,6 @@ class CompanyApi {
 
   // método para deletar um sevriço
   removeService = async (serviceId) => {
-    console.log("serviceID: ", serviceId);
     try {
       await this.api.delete(`/companies/service/${serviceId}`);
     } catch (error) {
@@ -207,7 +206,6 @@ class CompanyApi {
 
   // método para deletar uma oferta
   removeOffer = async (offerId) => {
-    console.log("offerID: ", offerId);
     try {
       await this.api.delete(`/companies/offer/${offerId}`);
     } catch (error) {
@@ -230,7 +228,7 @@ class CompanyApi {
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log(data);
+
       storeToken(data.authToken);
       return data;
     } catch (error) {

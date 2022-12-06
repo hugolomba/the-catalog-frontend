@@ -65,7 +65,7 @@ export default function BasicTabs({ company }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log(">>>> company", company);
+
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -94,7 +94,7 @@ export default function BasicTabs({ company }) {
             {company && company.description}
           </Item>
           <Divider />
-          <a Divideref={`tel:${company.phone}`}>
+          <a Divideref={`tel:${company && company.phone}`}>
             <Item elevation={0} sx={{ borderRadius: 5 }}>
               <h3>Telefone:</h3>
               {company && company.phone}
@@ -111,24 +111,28 @@ export default function BasicTabs({ company }) {
             <div className="profile-social-icons-container">
               <a
                 target="_blank"
-                Divideref={`https://www.instagram.com/${company.instagram}`}
+                Divideref={`https://www.instagram.com/${
+                  company && company.instagram
+                }`}
               >
                 <div className="profile-social-icons">
                   <span>
                     <Instagram />
                   </span>
-                  @{company.instagram}
+                  @{company && company.instagram}
                 </div>
               </a>
               <a
                 target="_blank"
-                Divideref={`https://api.whatsapp.com/send?phone=${company.whatsapp}`}
+                Divideref={`https://api.whatsapp.com/send?phone=${
+                  company && company.whatsapp
+                }`}
               >
                 <div className="profile-social-icons">
                   <span>
                     <WhatsApp />
                   </span>
-                  {company.whatsapp}
+                  {company && company.whatsapp}
                 </div>
               </a>
             </div>
