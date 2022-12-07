@@ -109,10 +109,6 @@ export default function SignIn() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
           <Button
             type="submit"
             fullWidth
@@ -142,7 +138,6 @@ export default function SignIn() {
           </Link>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
     </Container>
   );
 }

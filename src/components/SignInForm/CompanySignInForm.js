@@ -109,10 +109,6 @@ export default function SignIn() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
           <Button
             type="submit"
             fullWidth
@@ -133,15 +129,8 @@ export default function SignIn() {
               Ainda não tem cadastro? Cadastre-se!
             </Button>
           </Link>
-
-          <Grid container>
-            <Grid item xs>
-              <Link to="#">Esqueceu a senha?</Link>
-            </Grid>
-          </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
     </Container>
   );
 }

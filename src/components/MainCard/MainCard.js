@@ -8,6 +8,7 @@ import domestico from "../../img/types/domestico.png";
 import tec from "../../img/types/tec.png";
 import fashion from "../../img/types/fashion.png";
 import construction from "../../img/types/const.png";
+import other from "../../img/types/other.png";
 
 import events from "../../img/types/events.png";
 import drinks from "../../img/types/drinks.png";
@@ -46,6 +47,10 @@ const MainCard = ({ type }) => {
       break;
     case "Const. Civil":
       img = construction;
+      break;
+
+    case "Outros":
+      img = other;
       break;
 
     default:

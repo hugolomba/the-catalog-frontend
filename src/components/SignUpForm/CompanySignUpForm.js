@@ -227,6 +227,7 @@ export default function SignUp() {
                     </MenuItem>
                     <MenuItem value="Tecnologia">Tecnologia</MenuItem>
                     <MenuItem value="Moda">Moda</MenuItem>
+                    <MenuItem value="Outros">Outros</MenuItem>
                   </TextField>
                 </Grid>
 
