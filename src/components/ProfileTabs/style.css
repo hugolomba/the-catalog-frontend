@@ -4,7 +4,7 @@
 }
 
 .profile-social-icons-container a {
-  /* color: grey; */
+  color: rgba(0, 0, 0, 0.6);
   font-weight: 500;
 }
 
@@ -13,6 +13,7 @@
 
 .profile-social-icons-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
+  gap: 0.7rem;
 }

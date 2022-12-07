@@ -16,7 +16,7 @@ import { styled } from "@mui/material/styles";
 import OfferCard from "../ClothesOfferCard";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
-import { Instagram, WhatsApp } from "@mui/icons-material/";
+import { Instagram, WhatsApp, Email, Phone } from "@mui/icons-material/";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -93,25 +93,25 @@ export default function BasicTabs({ company }) {
           <Item elevation={0} sx={{ borderRadius: 5, padding: "2rem" }}>
             {company && company.description}
           </Item>
-          <Divider />
+          {/* <Divider />
           <a Divideref={`tel:${company && company.phone}`}>
             <Item elevation={0} sx={{ borderRadius: 5 }}>
               <h3>Telefone:</h3>
               {company && company.phone}
             </Item>
           </a>
-          <Divider />
+          <Divider /> */}
           <Item elevation={0} sx={{ borderRadius: 5 }}>
             <h3>Endereço:</h3>
             {company && company.addresses}
           </Item>
           <Divider />
           <Item elevation={0} sx={{ borderRadius: 5 }}>
-            <h3>Redes Sociais:</h3>
+            <h3>Redes Sociais / Contato:</h3>
             <div className="profile-social-icons-container">
               <a
                 target="_blank"
-                Divideref={`https://www.instagram.com/${
+                href={`https://www.instagram.com/${
                   company && company.instagram
                 }`}
               >
@@ -124,7 +124,7 @@ export default function BasicTabs({ company }) {
               </a>
               <a
                 target="_blank"
-                Divideref={`https://api.whatsapp.com/send?phone=${
+                href={`https://api.whatsapp.com/send?phone=${
                   company && company.whatsapp
                 }`}
               >
@@ -133,6 +133,22 @@ export default function BasicTabs({ company }) {
                     <WhatsApp />
                   </span>
                   {company && company.whatsapp}
+                </div>
+              </a>
+              <a target="_blank" href={`mailto:${company && company.email}`}>
+                <div className="profile-social-icons">
+                  <span>
+                    <Email />
+                  </span>
+                  {company && company.email}
+                </div>
+              </a>
+              <a target="_blank" href={`tel:${company && company.phone}`}>
+                <div className="profile-social-icons">
+                  <span>
+                    <Phone />
+                  </span>
+                  {company && company.phone}
                 </div>
               </a>
             </div>
