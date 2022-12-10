@@ -11,8 +11,8 @@
  <a href="#-layout">Layout</a> • 
  <a href="#-tecnologias">Tecnologias</a> • 
  <a href="#-autor">Autor</a> • 
- <a href="#user-content--licença">Licença</a>
-  <a href="#-live">Licença</a>
+ <a href="#user-content--licença">Licença</a> • 
+  <a href="#-live">Live</a>
 </p>
 
 ## 💻 Sobre o projeto
