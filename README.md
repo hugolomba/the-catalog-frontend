@@ -40,12 +40,6 @@ O projeto foi desenvolvido no último módulo do Bootcamp de Desenvolvimento Web
 
 ## 🎨 Layout
 
-O layout da aplicação está disponível no Figma:
-
-<a href="https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/Ecoleta?node-id=136%3A546">
-  <img alt="Made by tgmarinho" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
-</a>
-
 ### Mobile
 
 <p align="center">
