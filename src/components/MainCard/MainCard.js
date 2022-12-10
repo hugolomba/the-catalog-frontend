@@ -8,6 +8,7 @@ import domestico from "../../img/types/domestico.png";
 import tec from "../../img/types/tec.png";
 import fashion from "../../img/types/fashion.png";
 import construction from "../../img/types/const.png";
+import school from "../../img/types/school.png";
 import other from "../../img/types/other.png";
 
 import events from "../../img/types/events.png";
@@ -20,8 +21,8 @@ const MainCard = ({ type }) => {
     case "Restaurante":
       img = food;
       break;
-    case "Farmácia":
-      img = pharmacy;
+    case "Educação":
+      img = school;
       break;
     case "Serviços":
       img = services;
@@ -47,6 +48,9 @@ const MainCard = ({ type }) => {
       break;
     case "Const. Civil":
       img = construction;
+      break;
+    case "Farmácia":
+      img = pharmacy;
       break;
 
     case "Outros":
