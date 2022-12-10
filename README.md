@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+<h1 align="center">
+    <img alt="banner"  src="./src/img/banner.gif" />
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center"> 
+	📒 CATALOG - Catálogo de Serviços Online
 
-## Available Scripts
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a> •
+ <a href="#-funcionalidades">Funcionalidades</a> •
+ <a href="#-layout">Layout</a> • 
+ <a href="#-tecnologias">Tecnologias</a> • 
+ <a href="#-autor">Autor</a> • 
+ <a href="#user-content--licença">Licença</a>
+  <a href="#-live">Licença</a>
+</p>
 
-In the project directory, you can run:
+## 💻 Sobre o projeto
 
-### `npm start`
+CATALOG é um catálogo de serviços online, onde as empresas podem se cadastrar para disponibilizar suas informações, produtos e serviços para que os usuários possam encontrá-los.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O projeto foi desenvolvido no último módulo do Bootcamp de Desenvolvimento Web da [Ironhack](https://www.ironhack.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ⚙️ Funcionalidades
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [x] Empresas ou entidades podem:
 
-### `npm run build`
+  - [x] Se cadastrar, informando sua descrição e suas informações de contato
+  - [x] Cadastrar os produtos e serviços que oferece
+  - [x] Cadastrar ofertas e promoções
+  - [x] Logar no sistema e administrar produtos e serviços pelo painel de controle
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [x] Os usuários podem:
+  - [x] Ser cadastrar
+  - [x] Logar no sistema
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🎨 Layout
 
-### `npm run eject`
+O layout da aplicação está disponível no Figma:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<a href="https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/Ecoleta?node-id=136%3A546">
+  <img alt="Made by tgmarinho" src="https://img.shields.io/badge/Acessar%20Layout%20-Figma-%2304D361">
+</a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Mobile
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<p align="center">
+  <img alt="mobileHomePage"  src="./src/img/mobile1.png" width="200px">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  <img alt="mobileHomePage" src="./src/img/mobilegif.gif" width="200px">
+</p>
 
-## Learn More
+### Web
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="homePage" src="./src/img/home.png" width="400px">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+</p>
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🛠 Tecnologias
 
-### Analyzing the Bundle Size
+As seguintes ferramentas foram usadas na construção do projeto:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### **Website** ([React](https://reactjs.org/))
 
-### Making a Progressive Web App
+- **[React Router Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)**
+- **[Material UI](https://mui.com/)**
+- **[Axios](https://github.com/axios/axios)**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### [](https://github.com/tgmarinho/Ecoleta#server-nodejs--typescript)**Server** ([NodeJS](https://nodejs.org/en/))
 
-### Advanced Configuration
+-**[Repositório do Servidor](https://github.com/hugolomba/final-project-backend)**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **[Express](https://expressjs.com/)**
+- **[CORS](https://expressjs.com/en/resources/middleware/cors.html)**
+- **[MongoDB](https://www.mongodb.com/)**
+- **[mongoose](https://mongoosejs.com/)**
+- **[dotENV](https://github.com/motdotla/dotenv)**
+- **[Multer](https://github.com/expressjs/multer)**
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 💪 Como contribuir para o projeto
 
-### `npm run build` fails to minify
+1. Faça um **fork** do projeto.
+2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
+4. Envie as suas alterações: `git push origin my-feature`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🦸 Autor
+
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/98366477?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Hugo Miranda</b></sub>
+ <br />
+
+[![Linkedin Badge](https://img.shields.io/badge/-Hugo-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/hugolomba/)](https://www.linkedin.com/in/hugolomba/)
+
+---
+
+## 📝 Licença
+
+Este projeto esta sobe a licença [MIT](./LICENSE).
+
+Feito com ❤️ por Hugo Miranda 👋🏽 [Entre em contato!](https://www.linkedin.com/in/hugolomba/)
+
+---
+
+## 🌐 Live
+
+https://catalog.hugomiranda.me/
