@@ -10,7 +10,7 @@ class CompanyApi {
     this.api = axios.create({
       baseURL:
         process.env.REACT_APP_API_URL_USER ||
-        "https://final-project-backend-production.up.railway.app/",
+        "https://the-catalog-backend.onrender.com",
       // "http://localhost:5050/",
     });
 

@@ -4,6 +4,11 @@ import companyAuthApi from "../api/company.api";
 import { getToken, removeToken } from "../utils/token.utils";
 import axios from "axios";
 
+
+const API_URL = process.env.BACKEND_URL || "https://the-catalog-backend.onrender.com";
+
+console.log(">>>>>>", API_URL);
+
 const AuthContext = createContext();
 
 const AuthProviderWrapper = ({ children }) => {
@@ -139,7 +144,7 @@ const AuthProviderWrapper = ({ children }) => {
   useEffect(() => {
     authenticateUser();
     axios
-      .get("https://final-project-backend-production.up.railway.app/companies")
+      .get(`${API_URL}/companies`)
       .then((response) => setCompanies(response.data))
       .catch((error) => console.log(error));
   }, []);
